@@ -14,12 +14,14 @@ namespace ClaryJason_CE01
     {
       //------------------------------EVENT HANDLERS------------------------------
         public event EventHandler<TeamEventArgs> AddToMainForm;
+        public event EventHandler AddButtonChecker;
       //--------------------------------------------------------------------------
 
 
         public AddTeamForm()
         {
             InitializeComponent();
+            HandleClientWindowSize();
         }
 
         // Image Background Handler
@@ -82,6 +84,9 @@ namespace ClaryJason_CE01
                 AddToMainForm(this, newTeam);
                 this.Close();
             }
+
+            // invoke the custom event handler
+            AddButtonChecker?.Invoke(this, new EventArgs());
         }
       //-------------------------------------------------------------------------
     }

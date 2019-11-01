@@ -43,7 +43,9 @@
             this.lst_AFC = new System.Windows.Forms.ListBox();
             this.lst_NFC = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -54,7 +56,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(661, 40);
+            this.menuStrip1.Size = new System.Drawing.Size(661, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,36 +68,40 @@
             this.printToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.printToolStripMenuItem.Text = "Print";
+            this.printToolStripMenuItem.Click += new System.EventHandler(this.printToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(245, 38);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -149,6 +155,7 @@
             this.btn_DeleteTeam.TabIndex = 7;
             this.btn_DeleteTeam.Text = "Delete Team";
             this.btn_DeleteTeam.UseVisualStyleBackColor = true;
+            this.btn_DeleteTeam.Click += new System.EventHandler(this.btn_DeleteTeam_Click);
             // 
             // lst_AFC
             // 
@@ -160,6 +167,7 @@
             this.lst_AFC.Size = new System.Drawing.Size(236, 204);
             this.lst_AFC.TabIndex = 2;
             this.lst_AFC.TabStop = false;
+            this.lst_AFC.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lst_AFC_MouseClick);
             this.lst_AFC.DoubleClick += new System.EventHandler(this.lst_AFC_DoubleClick);
             // 
             // lst_NFC
@@ -172,6 +180,7 @@
             this.lst_NFC.Size = new System.Drawing.Size(236, 204);
             this.lst_NFC.TabIndex = 3;
             this.lst_NFC.TabStop = false;
+            this.lst_NFC.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lst_NFC_MouseClick);
             this.lst_NFC.DoubleClick += new System.EventHandler(this.lst_NFC_DoubleClick);
             // 
             // label4
@@ -184,6 +193,16 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "*Double click team to edit";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(232, 356);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 158);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -192,6 +211,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(661, 1280);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btn_DeleteTeam);
             this.Controls.Add(this.btn_NewTeam);
@@ -209,6 +229,7 @@
             this.Text = "Main";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,6 +251,7 @@
         private System.Windows.Forms.ListBox lst_AFC;
         private System.Windows.Forms.ListBox lst_NFC;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
