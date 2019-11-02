@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Code Exercise 01
+ */
+
 namespace ClaryJason_CE01
 {
     class FootballTeam
