@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lsv_Classes = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,15 +48,18 @@
             this.btn_Left = new System.Windows.Forms.Button();
             this.btn_Right = new System.Windows.Forms.Button();
             this.btn_NewCourse = new System.Windows.Forms.Button();
+            this.ilst_TrackIcons = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nud_Term)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Hours)).BeginInit();
             this.SuspendLayout();
             // 
             // lsv_Classes
             // 
+            this.lsv_Classes.LargeImageList = this.ilst_TrackIcons;
             this.lsv_Classes.Location = new System.Drawing.Point(80, 574);
             this.lsv_Classes.Name = "lsv_Classes";
             this.lsv_Classes.Size = new System.Drawing.Size(505, 311);
+            this.lsv_Classes.SmallImageList = this.ilst_TrackIcons;
             this.lsv_Classes.TabIndex = 0;
             this.lsv_Classes.UseCompatibleStateImageBehavior = false;
             // 
@@ -116,17 +120,19 @@
             // 
             // txt_CName
             // 
+            this.txt_CName.Enabled = false;
             this.txt_CName.Location = new System.Drawing.Point(278, 231);
             this.txt_CName.Name = "txt_CName";
             this.txt_CName.Size = new System.Drawing.Size(307, 31);
-            this.txt_CName.TabIndex = 7;
+            this.txt_CName.TabIndex = 1;
             // 
             // txt_CNumber
             // 
+            this.txt_CNumber.Enabled = false;
             this.txt_CNumber.Location = new System.Drawing.Point(278, 273);
             this.txt_CNumber.Name = "txt_CNumber";
             this.txt_CNumber.Size = new System.Drawing.Size(167, 31);
-            this.txt_CNumber.TabIndex = 8;
+            this.txt_CNumber.TabIndex = 2;
             // 
             // label7
             // 
@@ -139,20 +145,29 @@
             // 
             // nud_Term
             // 
+            this.nud_Term.Enabled = false;
             this.nud_Term.Location = new System.Drawing.Point(278, 315);
+            this.nud_Term.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.nud_Term.Name = "nud_Term";
             this.nud_Term.Size = new System.Drawing.Size(120, 31);
-            this.nud_Term.TabIndex = 10;
+            this.nud_Term.TabIndex = 3;
             // 
             // nud_Hours
             // 
+            this.nud_Hours.DecimalPlaces = 2;
+            this.nud_Hours.Enabled = false;
             this.nud_Hours.Location = new System.Drawing.Point(278, 360);
             this.nud_Hours.Name = "nud_Hours";
             this.nud_Hours.Size = new System.Drawing.Size(120, 31);
-            this.nud_Hours.TabIndex = 11;
+            this.nud_Hours.TabIndex = 4;
             // 
             // cbx_Track
             // 
+            this.cbx_Track.Enabled = false;
             this.cbx_Track.FormattingEnabled = true;
             this.cbx_Track.Items.AddRange(new object[] {
             "Central",
@@ -161,14 +176,14 @@
             this.cbx_Track.Location = new System.Drawing.Point(277, 403);
             this.cbx_Track.Name = "cbx_Track";
             this.cbx_Track.Size = new System.Drawing.Size(121, 33);
-            this.cbx_Track.TabIndex = 12;
+            this.cbx_Track.TabIndex = 5;
             // 
             // btn_Delete
             // 
             this.btn_Delete.Location = new System.Drawing.Point(190, 460);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(121, 41);
-            this.btn_Delete.TabIndex = 13;
+            this.btn_Delete.TabIndex = 7;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
             // 
@@ -177,7 +192,7 @@
             this.btn_Edit.Location = new System.Drawing.Point(374, 460);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(121, 41);
-            this.btn_Edit.TabIndex = 14;
+            this.btn_Edit.TabIndex = 8;
             this.btn_Edit.Text = "Edit";
             this.btn_Edit.UseVisualStyleBackColor = true;
             // 
@@ -186,7 +201,7 @@
             this.btn_Left.Location = new System.Drawing.Point(109, 460);
             this.btn_Left.Name = "btn_Left";
             this.btn_Left.Size = new System.Drawing.Size(45, 41);
-            this.btn_Left.TabIndex = 15;
+            this.btn_Left.TabIndex = 6;
             this.btn_Left.Text = "<";
             this.btn_Left.UseVisualStyleBackColor = true;
             // 
@@ -195,7 +210,7 @@
             this.btn_Right.Location = new System.Drawing.Point(530, 460);
             this.btn_Right.Name = "btn_Right";
             this.btn_Right.Size = new System.Drawing.Size(45, 41);
-            this.btn_Right.TabIndex = 16;
+            this.btn_Right.TabIndex = 9;
             this.btn_Right.Text = ">";
             this.btn_Right.UseVisualStyleBackColor = true;
             // 
@@ -204,9 +219,17 @@
             this.btn_NewCourse.Location = new System.Drawing.Point(248, 906);
             this.btn_NewCourse.Name = "btn_NewCourse";
             this.btn_NewCourse.Size = new System.Drawing.Size(197, 49);
-            this.btn_NewCourse.TabIndex = 17;
+            this.btn_NewCourse.TabIndex = 10;
             this.btn_NewCourse.Text = "New Course";
             this.btn_NewCourse.UseVisualStyleBackColor = true;
+            // 
+            // ilst_TrackIcons
+            // 
+            this.ilst_TrackIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilst_TrackIcons.ImageStream")));
+            this.ilst_TrackIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilst_TrackIcons.Images.SetKeyName(0, "Central");
+            this.ilst_TrackIcons.Images.SetKeyName(1, "iOS");
+            this.ilst_TrackIcons.Images.SetKeyName(2, "Android");
             // 
             // MainForm
             // 
@@ -265,6 +288,7 @@
         private System.Windows.Forms.Button btn_Left;
         private System.Windows.Forms.Button btn_Right;
         private System.Windows.Forms.Button btn_NewCourse;
+        private System.Windows.Forms.ImageList ilst_TrackIcons;
     }
 }
 
