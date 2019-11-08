@@ -1,0 +1,9 @@
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\bin\Debug\ClaryJason_CE02.exe.config
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\bin\Debug\ClaryJason_CE02.exe
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\bin\Debug\ClaryJason_CE02.pdb
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.MainForm.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.Properties.Resources.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.csproj.GenerateResource.Cache
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.exe
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Code_Exercises\ClaryJason_CE02\ClaryJason_CE02\obj\Debug\ClaryJason_CE02.pdb
