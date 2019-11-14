@@ -34,7 +34,7 @@ namespace ClaryJason_CE02
             try
             {
                 // get the data
-                RetrieveData();
+                RetrieveData();               
             }
             catch (Exception)
             {
@@ -42,6 +42,9 @@ namespace ClaryJason_CE02
                 MessageBox.Show("Unable to connect to the database");
                 Application.Exit();
             }
+
+            lsv_Classes.Items[0].Selected = true;
+            //FillFields();
         }
 
       //------------------------------HANDLES BACKGROUND IMAGE------------------------------
@@ -66,9 +69,6 @@ namespace ClaryJason_CE02
       //-------------------------------------MYSQL FUNCS------------------------------------
         private bool RetrieveData()
         {
-            // instantiate object to hold data
-            FullSailClass course = new FullSailClass();
-
             // create the SQL statement
             string sql = "SELECT * " +
                          "FROM Classes;";
@@ -88,6 +88,9 @@ namespace ClaryJason_CE02
             // make sure we don't go out of range
             while (currentRow < itemData.Rows.Count)
             {
+                // instantiate object to hold data
+                FullSailClass course = new FullSailClass();
+
                 course.ID = int.Parse(itemData.Rows[currentRow]["ID"].ToString());
                 course.CourseName = itemData.Rows[currentRow]["CourseName"].ToString();
                 course.CourseNumber = itemData.Rows[currentRow]["CourseNumber"].ToString();
@@ -122,7 +125,7 @@ namespace ClaryJason_CE02
                 // advance rows
                 currentRow++;
             }
- 
+                     
             return true;
         }
 
@@ -142,6 +145,19 @@ namespace ClaryJason_CE02
 
             MySqlDataReader rdr = cmd.ExecuteReader();
             rdr.Close();
+
+            return true;
+        }
+
+        private bool FillFields()
+        {
+            // fill in data from selected index item
+            FullSailClass item = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
+            txt_CName.Text = item.CourseName;
+            txt_CNumber.Text = item.CourseNumber;
+            nud_Term.Value = item.Term;
+            nud_Hours.Value = (decimal)item.CreditHours;
+            cbx_Track.Text = item.Track;
 
             return true;
         }
@@ -214,12 +230,36 @@ namespace ClaryJason_CE02
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-            
+            if (btn_Delete.Text == "Cancel")
+            {
+                // refill in the feilds with the appropriate data
+                FillFields();
+
+                // deactivate fields
+                txt_CName.Enabled = false;
+                txt_CNumber.Enabled = false;
+                nud_Term.Enabled = false;
+                nud_Hours.Enabled = false;
+                cbx_Track.Enabled = false;
+
+                // change buttons to origional purpose
+                btn_Edit.Text = "Edit";
+                btn_Delete.Text = "Delete";
+            }
+            else
+            {
+
+            }
         }
 
         private void btn_Right_Click(object sender, EventArgs e)
         {
-            
+            int index = lsv_Classes.FocusedItem.Index + 1;
+            MessageBox.Show(index.ToString());
+            lsv_Classes.Items[index].Selected = true;
+            FillFields();
+
+
         }
 
         private void btn_Left_Click(object sender, EventArgs e)
@@ -234,13 +274,7 @@ namespace ClaryJason_CE02
 
         private void lsv_Classes_MouseClick(object sender, MouseEventArgs e)
         {
-            // fill in data from selected index item
-            FullSailClass item = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
-            txt_CName.Text = item.CourseName;
-            txt_CNumber.Text = item.CourseNumber;
-            nud_Term.Value = item.Term;
-            nud_Hours.Value = (decimal)item.CreditHours;
-            cbx_Track.Text = item.Track;
+            FillFields();
         }
         //------------------------------------------------------------------------------------
     }
