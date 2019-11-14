@@ -62,6 +62,7 @@
             this.lsv_Classes.SmallImageList = this.ilst_TrackIcons;
             this.lsv_Classes.TabIndex = 0;
             this.lsv_Classes.UseCompatibleStateImageBehavior = false;
+            this.lsv_Classes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lsv_Classes_MouseClick);
             // 
             // ilst_TrackIcons
             // 

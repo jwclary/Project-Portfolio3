@@ -101,17 +101,19 @@ namespace ClaryJason_CE02
                 item.Tag = course;
 
                 // chooses imageindex based off of Track
-                if (course.Track == "Central")
+                switch (course.Track)
                 {
-                    item.ImageIndex = 0;
-                }
-                else if (course.Track == "iOS")
-                {
-                    item.ImageIndex = 1;
-                }
-                else
-                {
-                    item.ImageIndex = 2;
+                    case "Central":
+                        item.ImageIndex = 0;
+                        break;
+                    case "iOS":
+                        item.ImageIndex = 1;
+                        break;
+                    case "Android":
+                        item.ImageIndex = 2;
+                        break;
+                    default:
+                        break;
                 }
 
                 // add the item to the list
@@ -148,58 +150,71 @@ namespace ClaryJason_CE02
         //------------------------------------BUTTON CLICKS-----------------------------------
         private void btn_Edit_Click(object sender, EventArgs e)
         {
-            // change names of buttons to change the functionality
-            btn_Edit.Text = "Save Edit";
-            btn_Delete.Text = "Cancel";
-
             if (btn_Edit.Text == "Save Edit")
             {
-                // change buttons to origional purpose
-                btn_Edit.Text = "Edit";
-                btn_Delete.Text = "Delete";
-
                 // create a new object to hold the new data
                 FullSailClass updatedCourse = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
+
+                    // if textfields have all whitespace returns null
+                    if (string.IsNullOrWhiteSpace(txt_CName.Text))
+                    {
+                        updatedCourse.CourseName = null;
+                    }
+                    else { updatedCourse.CourseName = txt_CName.Text; }
+
+                    if (string.IsNullOrWhiteSpace(txt_CNumber.Text))
+                    {
+                        updatedCourse.CourseNumber = null;
+                    }
+                    else { updatedCourse.CourseNumber = txt_CNumber.Text; }
+
+                updatedCourse.Term = int.Parse(nud_Term.Value.ToString());
+                updatedCourse.CreditHours = double.Parse(nud_Hours.Value.ToString());
+                updatedCourse.Track = cbx_Track.Text;
+
                 try
                 {
-                    updatedCourse.CourseName = txt_CName.Text;
-                    updatedCourse.CourseNumber = txt_CNumber.Text;
+                    // update the database
+                    UpdateData(updatedCourse);
+
+                    // equal the new data to the selected items
+                    lsv_Classes.SelectedItems[0].Text = updatedCourse.ToString();
+                    lsv_Classes.SelectedItems[0].Tag = updatedCourse;
+
+                    // deactivate fields
+                    txt_CName.Enabled = false;
+                    txt_CNumber.Enabled = false;
+                    nud_Term.Enabled = false;
+                    nud_Hours.Enabled = false;
+                    cbx_Track.Enabled = false;
+
+                    // change buttons to origional purpose
+                    btn_Edit.Text = "Edit";
+                    btn_Delete.Text = "Delete";
                 }
                 catch (Exception)
                 {
                     MessageBox.Show("Do Not Leave Blank");
                 }
-                updatedCourse.Term = int.Parse(nud_Term.Value.ToString());
-                updatedCourse.CreditHours = double.Parse(nud_Hours.Value.ToString());
-                updatedCourse.Track = cbx_Track.Text;
-
-                // equal the new data to the selected items
-                lsv_Classes.SelectedItems[0].Text = updatedCourse.ToString();
-                lsv_Classes.SelectedItems[0].Tag = updatedCourse;
-
-                // update the database
-                UpdateData(updatedCourse);
             }
             else
             {
-                // sets the fields to blank info and enables changes
-                txt_CName.Text = "";
+                // enables changes
                 txt_CName.Enabled = true;
-                txt_CNumber.Text = "";
                 txt_CNumber.Enabled = true;
-                nud_Term.Value = 0;
                 nud_Term.Enabled = true;
-                nud_Hours.Value = 0;
                 nud_Hours.Enabled = true;
-                cbx_Track.SelectedValue = 0;
                 cbx_Track.Enabled = true;
 
+                // change names of buttons to change the functionality
+                btn_Edit.Text = "Save Edit";
+                btn_Delete.Text = "Cancel";
             }
         }
 
         private void btn_Delete_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btn_Right_Click(object sender, EventArgs e)
@@ -216,6 +231,17 @@ namespace ClaryJason_CE02
         {
 
         }
-      //------------------------------------------------------------------------------------
+
+        private void lsv_Classes_MouseClick(object sender, MouseEventArgs e)
+        {
+            // fill in data from selected index item
+            FullSailClass item = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
+            txt_CName.Text = item.CourseName;
+            txt_CNumber.Text = item.CourseNumber;
+            nud_Term.Value = item.Term;
+            nud_Hours.Value = (decimal)item.CreditHours;
+            cbx_Track.Text = item.Track;
+        }
+        //------------------------------------------------------------------------------------
     }
 }
