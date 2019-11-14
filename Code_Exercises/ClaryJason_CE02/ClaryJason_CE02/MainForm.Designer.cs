@@ -215,6 +215,7 @@
             this.btn_Left.TabIndex = 6;
             this.btn_Left.Text = "<";
             this.btn_Left.UseVisualStyleBackColor = true;
+            this.btn_Left.Click += new System.EventHandler(this.btn_Left_Click_1);
             // 
             // btn_Right
             // 
@@ -224,6 +225,7 @@
             this.btn_Right.TabIndex = 9;
             this.btn_Right.Text = ">";
             this.btn_Right.UseVisualStyleBackColor = true;
+            this.btn_Right.Click += new System.EventHandler(this.btn_Right_Click_1);
             // 
             // btn_NewCourse
             // 

@@ -20,6 +20,7 @@ namespace ClaryJason_CE02
         // counter for the current row
         int currentRow = 0;
         int numOfRows = 0;
+        int intIndex = 0;
 
         public MainForm()
         {
@@ -44,7 +45,7 @@ namespace ClaryJason_CE02
             }
 
             lsv_Classes.Items[0].Selected = true;
-            //FillFields();
+            FillFields(lsv_Classes.Items[0]);
         }
 
       //------------------------------HANDLES BACKGROUND IMAGE------------------------------
@@ -149,15 +150,15 @@ namespace ClaryJason_CE02
             return true;
         }
 
-        private bool FillFields()
+        private bool FillFields(ListViewItem item)
         {
             // fill in data from selected index item
-            FullSailClass item = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
-            txt_CName.Text = item.CourseName;
-            txt_CNumber.Text = item.CourseNumber;
-            nud_Term.Value = item.Term;
-            nud_Hours.Value = (decimal)item.CreditHours;
-            cbx_Track.Text = item.Track;
+            FullSailClass course = (FullSailClass)item.Tag;
+            txt_CName.Text = course.CourseName;
+            txt_CNumber.Text = course.CourseNumber;
+            nud_Term.Value = course.Term;
+            nud_Hours.Value = (decimal)course.CreditHours;
+            cbx_Track.Text = course.Track;
 
             return true;
         }
@@ -233,7 +234,7 @@ namespace ClaryJason_CE02
             if (btn_Delete.Text == "Cancel")
             {
                 // refill in the feilds with the appropriate data
-                FillFields();
+                FillFields(lsv_Classes.SelectedItems[0]);
 
                 // deactivate fields
                 txt_CName.Enabled = false;
@@ -264,19 +265,6 @@ namespace ClaryJason_CE02
             }
         }
 
-        private void btn_Right_Click(object sender, EventArgs e)
-        {
-            int index = lsv_Classes.FocusedItem.Index + 1;
-            MessageBox.Show(index.ToString());
-            lsv_Classes.Items[index].Selected = true;
-            FillFields();
-        }
-
-        private void btn_Left_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_NewCourse_Click(object sender, EventArgs e)
         {
 
@@ -284,7 +272,34 @@ namespace ClaryJason_CE02
 
         private void lsv_Classes_MouseClick(object sender, MouseEventArgs e)
         {
-            FillFields();
+            FillFields(lsv_Classes.SelectedItems[0]);
+
+            intIndex = lsv_Classes.SelectedItems[0].Index;
+            lsv_Classes.Items[intIndex].Selected = true;   
+        }
+
+        private void btn_Right_Click_1(object sender, EventArgs e)
+        {
+            intIndex++;
+            if (intIndex < lsv_Classes.Items.Count)
+            {
+                // sets the current item selected and fills in the information
+                lsv_Classes.Items[intIndex].Selected = true;
+                FillFields(lsv_Classes.Items[intIndex]);
+            }
+            else { intIndex--; }//if at end of list deletes the index increment
+        }
+
+        private void btn_Left_Click_1(object sender, EventArgs e)
+        {
+            intIndex--;
+            if (intIndex > lsv_Classes.Items[0].Index - 1)
+            {
+                // sets the current item selected and fills in the information
+                lsv_Classes.Items[intIndex].Selected = true;
+                FillFields(lsv_Classes.Items[intIndex]);
+            }
+            else { intIndex++; }//if at beggining of list increments index
         }
         //------------------------------------------------------------------------------------
     }
