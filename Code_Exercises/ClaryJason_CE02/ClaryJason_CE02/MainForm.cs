@@ -228,29 +228,47 @@ namespace ClaryJason_CE02
                 }
             }
             else if (btn_Edit.Text == "Add")
-            {
-                // deactivate fields
-                txt_CName.Enabled = true;
-                txt_CNumber.Enabled = true;
-                nud_Term.Enabled = true;
-                nud_Hours.Enabled = true;
-                cbx_Track.Enabled = true;
+            {               
+                //try
+                //{
+                    // add new info to a new FullSailClass object
+                    FullSailClass course = new FullSailClass();
 
-                // add new info to a new FullSailClass object
-                FullSailClass course = new FullSailClass();
+                    ValidatesTextInputs(course);
+                    course.Term = (int)nud_Term.Value;
+                    course.CreditHours = (double)nud_Hours.Value;
+                    course.Track = cbx_Track.Text;
 
-                ValidatesTextInputs(course);
-                course.Term = (int)nud_Term.Value;
-                course.CreditHours = (double)nud_Hours.Value;
-                course.Track = cbx_Track.Text;
-                course.ID = lsv_Classes.Items.Count + 1;
+                    FullSailClass temp = (FullSailClass)lsv_Classes.Items[lsv_Classes.Items.Count - 1].Tag;
+                    course.ID = temp.ID + 1;
 
-                // add to the list
-                AddToClasses(course);
+                    // add to the list
+                    AddToClasses(course);
 
-                // change buttons to origional purpose
-                btn_Edit.Text = "Edit";
-                btn_Delete.Text = "Delete";
+                    // add to database
+                    string stm = "INSERT INTO Classes(ID, CourseName, CourseNumber, Term, CreditHours, Track) " +
+                                 "VALUES(@itemId, @cName, @cNumber, @term, @cHours, @track)";
+
+                    MySqlCommand cmd = new MySqlCommand(stm, conn);
+                    cmd.Parameters.AddWithValue("@itemId", course.ID);
+                    cmd.Parameters.AddWithValue("@cName", course.CourseName);
+                    cmd.Parameters.AddWithValue("@cNumber", course.CourseNumber);
+                    cmd.Parameters.AddWithValue("@term", course.Term);
+                    cmd.Parameters.AddWithValue("@cHours", course.CreditHours);
+                    cmd.Parameters.AddWithValue("@track", course.Track);
+
+                    MySqlDataReader rdr = cmd.ExecuteReader();
+                    rdr.Close();
+
+                    // change buttons to origional purpose
+                    btn_Edit.Text = "Edit";
+                    btn_Delete.Text = "Delete";
+                //}
+                //catch (Exception)
+                //{
+
+                //    MessageBox.Show("Do Not Leave Blank");
+                //}  
             }
             else
             {
@@ -273,7 +291,7 @@ namespace ClaryJason_CE02
             if (btn_Delete.Text == "Cancel")
             {
                 // refill in the feilds with the appropriate data
-                FillFields(lsv_Classes.SelectedItems[0]);
+                FillFields(lsv_Classes.Items[0]);
 
                 // deactivate fields
                 txt_CName.Enabled = false;
@@ -281,6 +299,7 @@ namespace ClaryJason_CE02
                 nud_Term.Enabled = false;
                 nud_Hours.Enabled = false;
                 cbx_Track.Enabled = false;
+                btn_NewCourse.Enabled = true;
 
                 // change buttons to origional purpose
                 btn_Edit.Text = "Edit";
@@ -312,9 +331,16 @@ namespace ClaryJason_CE02
                 nud_Term.Value = 0;
                 nud_Hours.Value = 0;
                 cbx_Track.SelectedIndex = 0;
+           
+            // deactivate fields
+            txt_CName.Enabled = true;
+            txt_CNumber.Enabled = true;
+            nud_Term.Enabled = true;
+            nud_Hours.Enabled = true;
+            cbx_Track.Enabled = true;
 
-                // deactivate button
-                btn_NewCourse.Enabled = false;
+            // deactivate button
+            btn_NewCourse.Enabled = false;
 
                 btn_Edit.Text = "Add";
             btn_Delete.Text = "Cancel";
