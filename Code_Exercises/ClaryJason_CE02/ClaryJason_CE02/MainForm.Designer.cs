@@ -49,8 +49,13 @@
             this.btn_Left = new System.Windows.Forms.Button();
             this.btn_Right = new System.Windows.Forms.Button();
             this.btn_NewCourse = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_Save = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_Exit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Term)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Hours)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lsv_Classes
@@ -237,6 +242,40 @@
             this.btn_NewCourse.UseVisualStyleBackColor = true;
             this.btn_NewCourse.Click += new System.EventHandler(this.btn_NewCourse_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(661, 42);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_Save,
+            this.tsmi_Exit});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // tsmi_Save
+            // 
+            this.tsmi_Save.Name = "tsmi_Save";
+            this.tsmi_Save.Size = new System.Drawing.Size(268, 38);
+            this.tsmi_Save.Text = "Save";
+            this.tsmi_Save.Click += new System.EventHandler(this.tsmi_Save_Click);
+            // 
+            // tsmi_Exit
+            // 
+            this.tsmi_Exit.Name = "tsmi_Exit";
+            this.tsmi_Exit.Size = new System.Drawing.Size(268, 38);
+            this.tsmi_Exit.Text = "Exit";
+            this.tsmi_Exit.Click += new System.EventHandler(this.tsmi_Exit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -264,11 +303,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lsv_Classes);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Main Form";
             ((System.ComponentModel.ISupportInitialize)(this.nud_Term)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Hours)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,6 +338,10 @@
         private System.Windows.Forms.Button btn_Right;
         private System.Windows.Forms.Button btn_NewCourse;
         private System.Windows.Forms.ImageList ilst_TrackIcons;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_Save;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_Exit;
     }
 }
 

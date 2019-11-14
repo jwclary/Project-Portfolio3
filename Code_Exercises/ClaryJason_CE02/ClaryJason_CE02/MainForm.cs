@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 // directive to connect to Mysql
 using MySql.Data.MySqlClient;
+using System.IO;
 
 /*
   Jason W. Clary
@@ -389,6 +390,87 @@ namespace ClaryJason_CE02
                 FillFields(lsv_Classes.Items[intIndex]);
             }
             else { intIndex++; }//if at beggining of list increments index
+        }
+
+        // save for a prinatble format in text file
+        private void tsmi_Save_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog1.DefaultExt = ".txt";
+                saveFileDialog1.FilterIndex = 2;
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    // Code to write the stream goes here.
+                    using (StreamWriter sw = new StreamWriter(saveFileDialog1.FileName))
+                    {
+                        sw.WriteLine("-----Full Sail Classes For Bachelores Of Mobile Development-----");
+                        sw.WriteLine();
+
+                        sw.WriteLine("-------------------Central------------------");
+                        foreach (ListViewItem item in lsv_Classes.Items)
+                        {
+                            FullSailClass course = (FullSailClass)item.Tag;
+
+                            if (course.Track == "Central")
+                            {
+                                sw.WriteLine($"\t{course.CourseName}-{course.CourseNumber}:");
+                                sw.WriteLine("Term:".PadRight(15) + course.Term);
+                                sw.WriteLine("Credit Hours:".PadRight(15) + course.CreditHours);
+                                sw.WriteLine("Track:".PadRight(15) + course.Track);
+                            }
+                        }
+
+                        sw.WriteLine();
+
+                        sw.WriteLine("-------------------iOS------------------");
+                        foreach (ListViewItem item in lsv_Classes.Items)
+                        {
+                            FullSailClass course = (FullSailClass)item.Tag;
+
+                            if (course.Track == "iOS")
+                            {
+                                sw.WriteLine($"\t{course.CourseName}-{course.CourseNumber}:");
+                                sw.WriteLine("Term:".PadRight(15) + course.Term);
+                                sw.WriteLine("Credit Hours:".PadRight(15) + course.CreditHours);
+                                sw.WriteLine("Track:".PadRight(15) + course.Track);
+                            }
+                        }
+
+                        sw.WriteLine();
+
+                        sw.WriteLine("-------------------Android------------------");
+                        foreach (ListViewItem item in lsv_Classes.Items)
+                        {
+                            FullSailClass course = (FullSailClass)item.Tag;
+
+                            if (course.Track == "Android")
+                            {
+                                sw.WriteLine($"\t{course.CourseName}-{course.CourseNumber}:");
+                                sw.WriteLine("Term:".PadRight(15) + course.Term);
+                                sw.WriteLine("Credit Hours:".PadRight(15) + course.CreditHours);
+                                sw.WriteLine("Track:".PadRight(15) + course.Track);
+                            }
+                        }
+
+                        sw.Close();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in Saving Data!");
+            }
+        }
+
+        private void tsmi_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
         //------------------------------------------------------------------------------------
     }
