@@ -44,6 +44,7 @@ namespace ClaryJason_CE02
                 Application.Exit();
             }
 
+            // selects the first item and fills in the fields with its data
             lsv_Classes.Items[0].Selected = true;
             FillFields(lsv_Classes.Items[0]);
         }
@@ -228,9 +229,9 @@ namespace ClaryJason_CE02
                 }
             }
             else if (btn_Edit.Text == "Add")
-            {               
-                //try
-                //{
+            {
+                try
+                {
                     // add new info to a new FullSailClass object
                     FullSailClass course = new FullSailClass();
 
@@ -239,6 +240,7 @@ namespace ClaryJason_CE02
                     course.CreditHours = (double)nud_Hours.Value;
                     course.Track = cbx_Track.Text;
 
+                // gets the last added item from database and increments its ID for new item
                     FullSailClass temp = (FullSailClass)lsv_Classes.Items[lsv_Classes.Items.Count - 1].Tag;
                     course.ID = temp.ID + 1;
 
@@ -263,13 +265,13 @@ namespace ClaryJason_CE02
                     // change buttons to origional purpose
                     btn_Edit.Text = "Edit";
                     btn_Delete.Text = "Delete";
-                //}
-                //catch (Exception)
-                //{
-
-                //    MessageBox.Show("Do Not Leave Blank");
-                //}  
             }
+                catch (Exception)
+            {
+
+                MessageBox.Show("Do Not Leave Blank");
+            }
+        }
             else
             {
                 // enables changes
