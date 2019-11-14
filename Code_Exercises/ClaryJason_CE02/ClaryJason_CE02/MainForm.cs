@@ -10,6 +10,12 @@ using System.Windows.Forms;
 // directive to connect to Mysql
 using MySql.Data.MySqlClient;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Code Exercise 02
+ */
+
 namespace ClaryJason_CE02
 {
     public partial class MainForm : Form

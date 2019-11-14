@@ -8,6 +8,12 @@ using MySql.Data.MySqlClient;
 using System.IO;
 using System.Windows.Forms;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Code Exercise 02
+ */
+
 namespace ClaryJason_CE02
 {
     class DBUtilities
@@ -55,20 +61,20 @@ namespace ClaryJason_CE02
             catch (MySqlException e)
             {
                 MessageBox.Show(e.Message);
-                // check for possible errors being thrown
-                //switch (e.Number)
-                //{
-                //    case 1042:
-                //        MessageBox.Show("Can't resolve host address.\n\n" + myConnString);
-                //        break;
-                //    case 1045:
-                //        MessageBox.Show("Invalid username/password.");
-                //        break;
-                //    default:
-                //        // MessageBox with the exception error message
-                //        MessageBox.Show(e.ToString() + "\n\n" + myConnString);
-                //        break;
-                //}
+                //check for possible errors being thrown
+                switch (e.Number)
+                    {
+                        case 1042:
+                            MessageBox.Show("Can't resolve host address.\n\n" + myConnString);
+                            break;
+                        case 1045:
+                            MessageBox.Show("Invalid username/password.");
+                            break;
+                        default:
+                            // MessageBox with the exception error message
+                            MessageBox.Show(e.ToString() + "\n\n" + myConnString);
+                            break;
+                    }
             }
 
             // return the connection object

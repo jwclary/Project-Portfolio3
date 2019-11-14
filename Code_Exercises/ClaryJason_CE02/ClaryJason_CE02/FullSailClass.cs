@@ -4,6 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Code Exercise 02
+ */
+
 namespace ClaryJason_CE02
 {
     class FullSailClass
