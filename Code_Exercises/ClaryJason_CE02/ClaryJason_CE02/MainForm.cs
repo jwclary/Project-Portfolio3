@@ -228,6 +228,7 @@ namespace ClaryJason_CE02
                     // change buttons to origional purpose
                     btn_Edit.Text = "Edit";
                     btn_Delete.Text = "Delete";
+                    btn_NewCourse.Enabled = true;
                 }
                 catch (Exception)
                 {
@@ -328,6 +329,9 @@ namespace ClaryJason_CE02
 
                 // deletes from view list
                 lsv_Classes.SelectedItems[0].Remove();
+
+                // Fill in Fields with first item info
+                FillFields(lsv_Classes.Items[0]);
             }
         }
 
