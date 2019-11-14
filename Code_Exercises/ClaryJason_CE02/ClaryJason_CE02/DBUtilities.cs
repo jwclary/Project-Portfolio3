@@ -50,7 +50,7 @@ namespace ClaryJason_CE02
                 conn.ConnectionString = myConnString;
                 conn.Open();
                 // DEBUG: MessageBox to indicate that the connection was successful
-                MessageBox.Show("Connected!");
+                //MessageBox.Show("Connected!");
             }
             catch (MySqlException e)
             {

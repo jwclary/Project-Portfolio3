@@ -31,12 +31,17 @@ namespace ClaryJason_CE02
 
             // invoke the method to make the connection
             conn = DBUtilities.Connect(connString);
+            try
+            {
+                // get the data
+                RetrieveData();
+            }
+            catch (Exception)
+            {
 
-            // get the data
-            RetrieveData();
-
-            // set selected index to 0
-            
+                MessageBox.Show("Unable to connect to the database");
+                Application.Exit();
+            }
         }
 
       //------------------------------HANDLES BACKGROUND IMAGE------------------------------
@@ -81,7 +86,7 @@ namespace ClaryJason_CE02
             numOfRows = itemData.Select().Length;
 
             // make sure we don't go out of range
-            if (currentRow < itemData.Rows.Count - 1)
+            while (currentRow < itemData.Rows.Count)
             {
                 course.ID = int.Parse(itemData.Rows[currentRow]["ID"].ToString());
                 course.CourseName = itemData.Rows[currentRow]["CourseName"].ToString();
