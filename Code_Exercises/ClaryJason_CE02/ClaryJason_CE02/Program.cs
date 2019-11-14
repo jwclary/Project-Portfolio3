@@ -16,7 +16,8 @@ namespace ClaryJason_CE02
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            MainForm MainForm = new MainForm();
+            Application.Run(MainForm);
         }
     }
 }

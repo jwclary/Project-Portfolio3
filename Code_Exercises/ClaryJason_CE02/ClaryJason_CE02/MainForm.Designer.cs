@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lsv_Classes = new System.Windows.Forms.ListView();
+            this.ilst_TrackIcons = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.btn_Left = new System.Windows.Forms.Button();
             this.btn_Right = new System.Windows.Forms.Button();
             this.btn_NewCourse = new System.Windows.Forms.Button();
-            this.ilst_TrackIcons = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nud_Term)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Hours)).BeginInit();
             this.SuspendLayout();
@@ -59,9 +59,16 @@
             this.lsv_Classes.Location = new System.Drawing.Point(80, 574);
             this.lsv_Classes.Name = "lsv_Classes";
             this.lsv_Classes.Size = new System.Drawing.Size(505, 311);
-            this.lsv_Classes.SmallImageList = this.ilst_TrackIcons;
             this.lsv_Classes.TabIndex = 0;
             this.lsv_Classes.UseCompatibleStateImageBehavior = false;
+            // 
+            // ilst_TrackIcons
+            // 
+            this.ilst_TrackIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilst_TrackIcons.ImageStream")));
+            this.ilst_TrackIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilst_TrackIcons.Images.SetKeyName(0, "Central");
+            this.ilst_TrackIcons.Images.SetKeyName(1, "iOS");
+            this.ilst_TrackIcons.Images.SetKeyName(2, "Android");
             // 
             // label1
             // 
@@ -186,6 +193,7 @@
             this.btn_Delete.TabIndex = 7;
             this.btn_Delete.Text = "Delete";
             this.btn_Delete.UseVisualStyleBackColor = true;
+            this.btn_Delete.Click += new System.EventHandler(this.btn_Delete_Click);
             // 
             // btn_Edit
             // 
@@ -195,6 +203,7 @@
             this.btn_Edit.TabIndex = 8;
             this.btn_Edit.Text = "Edit";
             this.btn_Edit.UseVisualStyleBackColor = true;
+            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
             // btn_Left
             // 
@@ -204,6 +213,7 @@
             this.btn_Left.TabIndex = 6;
             this.btn_Left.Text = "<";
             this.btn_Left.UseVisualStyleBackColor = true;
+            this.btn_Left.Click += new System.EventHandler(this.btn_Left_Click);
             // 
             // btn_Right
             // 
@@ -213,6 +223,7 @@
             this.btn_Right.TabIndex = 9;
             this.btn_Right.Text = ">";
             this.btn_Right.UseVisualStyleBackColor = true;
+            this.btn_Right.Click += new System.EventHandler(this.btn_Right_Click);
             // 
             // btn_NewCourse
             // 
@@ -222,14 +233,7 @@
             this.btn_NewCourse.TabIndex = 10;
             this.btn_NewCourse.Text = "New Course";
             this.btn_NewCourse.UseVisualStyleBackColor = true;
-            // 
-            // ilst_TrackIcons
-            // 
-            this.ilst_TrackIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilst_TrackIcons.ImageStream")));
-            this.ilst_TrackIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilst_TrackIcons.Images.SetKeyName(0, "Central");
-            this.ilst_TrackIcons.Images.SetKeyName(1, "iOS");
-            this.ilst_TrackIcons.Images.SetKeyName(2, "Android");
+            this.btn_NewCourse.Click += new System.EventHandler(this.btn_NewCourse_Click);
             // 
             // MainForm
             // 

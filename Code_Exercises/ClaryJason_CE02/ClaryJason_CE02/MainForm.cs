@@ -34,6 +34,9 @@ namespace ClaryJason_CE02
 
             // get the data
             RetrieveData();
+
+            // set selected index to 0
+            
         }
 
       //------------------------------HANDLES BACKGROUND IMAGE------------------------------
@@ -55,7 +58,7 @@ namespace ClaryJason_CE02
         }
       //------------------------------------------------------------------------------------
 
-      //-------------------------------------MYSQL PULL-------------------------------------
+      //-------------------------------------MYSQL FUNCS------------------------------------
         private bool RetrieveData()
         {
             // instantiate object to hold data
@@ -77,20 +80,129 @@ namespace ClaryJason_CE02
             // we can also get a couple of the rows
             numOfRows = itemData.Select().Length;
 
-            // now we can fill in the rows
-            course.CourseName = itemData.Rows[currentRow]["CourseName"].ToString();
-            course.CourseNumber = itemData.Rows[currentRow]["CourseNumber"].ToString();
-            course.Term = int.Parse(itemData.Rows[currentRow]["Term"].ToString());
-            course.CreditHours = double.Parse(itemData.Rows[currentRow]["CreditHours"].ToString());
-            course.Track = itemData.Rows[currentRow]["Track"].ToString();
+            // make sure we don't go out of range
+            if (currentRow < itemData.Rows.Count - 1)
+            {
+                course.ID = int.Parse(itemData.Rows[currentRow]["ID"].ToString());
+                course.CourseName = itemData.Rows[currentRow]["CourseName"].ToString();
+                course.CourseNumber = itemData.Rows[currentRow]["CourseNumber"].ToString();
+                course.Term = int.Parse(itemData.Rows[currentRow]["Term"].ToString());
+                course.CreditHours = double.Parse(itemData.Rows[currentRow]["CreditHours"].ToString());
+                course.Track = itemData.Rows[currentRow]["Track"].ToString();
 
-            // add object to listview
-            ListViewItem item = new ListViewItem();
-            item.Text = course.ToString();
-            item.Tag = course;
-            lsv_Classes.Items.Add(item);
+                // add object to listview
+                ListViewItem item = new ListViewItem();
+                item.Text = course.ToString();
+                item.Tag = course;
+
+                // chooses imageindex based off of Track
+                if (course.Track == "Central")
+                {
+                    item.ImageIndex = 0;
+                }
+                else if (course.Track == "iOS")
+                {
+                    item.ImageIndex = 1;
+                }
+                else
+                {
+                    item.ImageIndex = 2;
+                }
+
+                // add the item to the list
+                lsv_Classes.Items.Add(item);
+
+                // advance rows
+                currentRow++;
+            }
+ 
+            return true;
+        }
+
+        private bool UpdateData(FullSailClass course)
+        {
+            string stm = "UPDATE item " +
+                         "SET CourseName = @CName, CourseNumber = @CNumber, Term = @Term, CreditHours = @CHours, Track = @Track " +
+                         "WHERE itemId = @itemId;";
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.Parameters.AddWithValue("@itemId", course.ID);
+            cmd.Parameters.AddWithValue("@CName", course.CourseName);
+            cmd.Parameters.AddWithValue("@CNumber", course.CourseNumber);
+            cmd.Parameters.AddWithValue("@Term", course.Term);
+            cmd.Parameters.AddWithValue("@CHours", course.CreditHours);
+            cmd.Parameters.AddWithValue("@Track", course.Track);
+
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Close();
 
             return true;
+        }
+        //------------------------------------------------------------------------------------
+
+        //------------------------------------BUTTON CLICKS-----------------------------------
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            // change names of buttons to change the functionality
+            btn_Edit.Text = "Save Edit";
+            btn_Delete.Text = "Cancel";
+
+            if (btn_Edit.Text == "Save Edit")
+            {
+                // change buttons to origional purpose
+                btn_Edit.Text = "Edit";
+                btn_Delete.Text = "Delete";
+
+                // create a new object to hold the new data
+                FullSailClass updatedCourse = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
+                try
+                {
+                    updatedCourse.CourseName = txt_CName.Text;
+                    updatedCourse.CourseNumber = txt_CNumber.Text;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Do Not Leave Blank");
+                }
+                updatedCourse.Term = int.Parse(nud_Term.Value.ToString());
+                updatedCourse.CreditHours = double.Parse(nud_Hours.Value.ToString());
+                updatedCourse.Track = cbx_Track.Text;
+
+                // equal the new data to the selected items
+                lsv_Classes.SelectedItems[0].Text = updatedCourse.ToString();
+                lsv_Classes.SelectedItems[0].Tag = updatedCourse;
+
+                // update the database
+                UpdateData(updatedCourse);
+            }
+            else
+            {
+                txt_CName.Text = "";
+                txt_CNumber.Text = "";
+                nud_Term.Value = 0;
+                nud_Hours.Value = 0;
+                cbx_Track.SelectedValue = 0;
+            }
+        }
+
+        private void btn_Delete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Right_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btn_Left_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_NewCourse_Click(object sender, EventArgs e)
+        {
+
         }
       //------------------------------------------------------------------------------------
     }

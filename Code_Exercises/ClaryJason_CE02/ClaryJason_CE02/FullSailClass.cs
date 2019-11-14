@@ -9,6 +9,7 @@ namespace ClaryJason_CE02
     class FullSailClass
     {
         // holds data pulled from database
+        public int ID { get; set; }
         public string CourseName { get; set; }
         public string CourseNumber { get; set; }
         public int Term { get; set; }

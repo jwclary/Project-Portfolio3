@@ -16,11 +16,27 @@ namespace ClaryJason_CE02
         public static string BuildConnectionString()
         {
             // variables to holds the IP address and the port number
-            string serverIP = "127.0.0.1";
-            string port = "8889";
-            string database = "MobileDev";
+            string serverIP = "";
+            string port = "";
 
-            return $"server= {serverIP};userid=root;password=root;database={database};port={port}";
+            try
+            {
+                // open the text file using a StreamReader
+                using (StreamReader sr = new StreamReader(@"C:\VFW\connect.txt"))
+                {
+                    // read the data from the text file
+                    serverIP = sr.ReadLine();
+                    port = sr.ReadLine();
+                }
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.ToString());
+            }
+
+            return $"server={serverIP};uid=dbsAdmin;pwd=password;port={port};database=MobileDev;";
+
         }
 
         // method to connect to the Mysql database
@@ -38,20 +54,21 @@ namespace ClaryJason_CE02
             }
             catch (MySqlException e)
             {
+                MessageBox.Show(e.Message);
                 // check for possible errors being thrown
-                switch (e.Number)
-                {
-                    case 1042:
-                        MessageBox.Show("Can't resolve host address.\n\n" + myConnString);
-                        break;
-                    case 1045:
-                        MessageBox.Show("Invalid username/password.");
-                        break;
-                    default:
-                        // MessageBox with the exception error message
-                        MessageBox.Show(e.ToString() + "\n\n" + myConnString);
-                        break;
-                }
+                //switch (e.Number)
+                //{
+                //    case 1042:
+                //        MessageBox.Show("Can't resolve host address.\n\n" + myConnString);
+                //        break;
+                //    case 1045:
+                //        MessageBox.Show("Invalid username/password.");
+                //        break;
+                //    default:
+                //        // MessageBox with the exception error message
+                //        MessageBox.Show(e.ToString() + "\n\n" + myConnString);
+                //        break;
+                //}
             }
 
             // return the connection object
