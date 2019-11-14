@@ -99,29 +99,8 @@ namespace ClaryJason_CE02
                 course.CreditHours = double.Parse(itemData.Rows[currentRow]["CreditHours"].ToString());
                 course.Track = itemData.Rows[currentRow]["Track"].ToString();
 
-                // add object to listview
-                ListViewItem item = new ListViewItem();
-                item.Text = course.ToString();
-                item.Tag = course;
-
-                // chooses imageindex based off of Track
-                switch (course.Track)
-                {
-                    case "Central":
-                        item.ImageIndex = 0;
-                        break;
-                    case "iOS":
-                        item.ImageIndex = 1;
-                        break;
-                    case "Android":
-                        item.ImageIndex = 2;
-                        break;
-                    default:
-                        break;
-                }
-
-                // add the item to the list
-                lsv_Classes.Items.Add(item);
+                // add to the list
+                AddToClasses(course);
 
                 // advance rows
                 currentRow++;
@@ -149,6 +128,26 @@ namespace ClaryJason_CE02
 
             return true;
         }
+        //------------------------------------------------------------------------------------
+
+        //-------------------------------------FIELDS FUNCS-----------------------------------
+        private bool ValidatesTextInputs(FullSailClass course)
+        {
+            // if textfields have all whitespace returns null
+            if (string.IsNullOrWhiteSpace(txt_CName.Text))
+            {
+                course.CourseName = null;
+            }
+            else { course.CourseName = txt_CName.Text; }
+
+            if (string.IsNullOrWhiteSpace(txt_CNumber.Text))
+            {
+                course.CourseNumber = null;
+            }
+            else { course.CourseNumber = txt_CNumber.Text; }
+
+            return true;
+        }
 
         private bool FillFields(ListViewItem item)
         {
@@ -162,9 +161,35 @@ namespace ClaryJason_CE02
 
             return true;
         }
+
+        private bool AddToClasses(FullSailClass course)
+        {
+            ListViewItem item = new ListViewItem();
+            item.Text = course.ToString();
+            item.Tag = course;
+            switch (course.Track)
+            {
+                case "Central":
+                    item.ImageIndex = 0;
+                    break;
+                case "iOS":
+                    item.ImageIndex = 1;
+                    break;
+                case "Android":
+                    item.ImageIndex = 2;
+                    break;
+                default:
+                    break;
+            }
+            lsv_Classes.Items.Add(item);
+
+            return true;
+        }
         //------------------------------------------------------------------------------------
 
         //------------------------------------BUTTON CLICKS-----------------------------------
+
+        // button handles edit/save edit/save
         private void btn_Edit_Click(object sender, EventArgs e)
         {
             if (btn_Edit.Text == "Save Edit")
@@ -172,19 +197,7 @@ namespace ClaryJason_CE02
                 // create a new object to hold the new data
                 FullSailClass updatedCourse = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
 
-                    // if textfields have all whitespace returns null
-                    if (string.IsNullOrWhiteSpace(txt_CName.Text))
-                    {
-                        updatedCourse.CourseName = null;
-                    }
-                    else { updatedCourse.CourseName = txt_CName.Text; }
-
-                    if (string.IsNullOrWhiteSpace(txt_CNumber.Text))
-                    {
-                        updatedCourse.CourseNumber = null;
-                    }
-                    else { updatedCourse.CourseNumber = txt_CNumber.Text; }
-
+                ValidatesTextInputs(updatedCourse);
                 updatedCourse.Term = int.Parse(nud_Term.Value.ToString());
                 updatedCourse.CreditHours = double.Parse(nud_Hours.Value.ToString());
                 updatedCourse.Track = cbx_Track.Text;
@@ -214,6 +227,31 @@ namespace ClaryJason_CE02
                     MessageBox.Show("Do Not Leave Blank");
                 }
             }
+            else if (btn_Edit.Text == "Add")
+            {
+                // deactivate fields
+                txt_CName.Enabled = true;
+                txt_CNumber.Enabled = true;
+                nud_Term.Enabled = true;
+                nud_Hours.Enabled = true;
+                cbx_Track.Enabled = true;
+
+                // add new info to a new FullSailClass object
+                FullSailClass course = new FullSailClass();
+
+                ValidatesTextInputs(course);
+                course.Term = (int)nud_Term.Value;
+                course.CreditHours = (double)nud_Hours.Value;
+                course.Track = cbx_Track.Text;
+                course.ID = lsv_Classes.Items.Count + 1;
+
+                // add to the list
+                AddToClasses(course);
+
+                // change buttons to origional purpose
+                btn_Edit.Text = "Edit";
+                btn_Delete.Text = "Delete";
+            }
             else
             {
                 // enables changes
@@ -229,6 +267,7 @@ namespace ClaryJason_CE02
             }
         }
 
+        // button handles delete and cancel
         private void btn_Delete_Click(object sender, EventArgs e)
         {
             if (btn_Delete.Text == "Cancel")
@@ -266,12 +305,24 @@ namespace ClaryJason_CE02
         }
 
         private void btn_NewCourse_Click(object sender, EventArgs e)
-        {
+        {            
+                // refill in the fields with the appropriate data
+                txt_CName.Text = "";
+                txt_CNumber.Text = "";
+                nud_Term.Value = 0;
+                nud_Hours.Value = 0;
+                cbx_Track.SelectedIndex = 0;
 
+                // deactivate button
+                btn_NewCourse.Enabled = false;
+
+                btn_Edit.Text = "Add";
+            btn_Delete.Text = "Cancel";
         }
 
         private void lsv_Classes_MouseClick(object sender, MouseEventArgs e)
         {
+            // sets the current item selected and fills in the information
             FillFields(lsv_Classes.SelectedItems[0]);
 
             intIndex = lsv_Classes.SelectedItems[0].Index;
