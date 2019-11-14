@@ -126,9 +126,9 @@ namespace ClaryJason_CE02
 
         private bool UpdateData(FullSailClass course)
         {
-            string stm = "UPDATE item " +
+            string stm = "UPDATE Classes " +
                          "SET CourseName = @CName, CourseNumber = @CNumber, Term = @Term, CreditHours = @CHours, Track = @Track " +
-                         "WHERE itemId = @itemId;";
+                         "WHERE ID = @itemId;";
 
             MySqlCommand cmd = new MySqlCommand(stm, conn);
             cmd.Parameters.AddWithValue("@itemId", course.ID);
@@ -182,11 +182,18 @@ namespace ClaryJason_CE02
             }
             else
             {
+                // sets the fields to blank info and enables changes
                 txt_CName.Text = "";
+                txt_CName.Enabled = true;
                 txt_CNumber.Text = "";
+                txt_CNumber.Enabled = true;
                 nud_Term.Value = 0;
+                nud_Term.Enabled = true;
                 nud_Hours.Value = 0;
+                nud_Hours.Enabled = true;
                 cbx_Track.SelectedValue = 0;
+                cbx_Track.Enabled = true;
+
             }
         }
 

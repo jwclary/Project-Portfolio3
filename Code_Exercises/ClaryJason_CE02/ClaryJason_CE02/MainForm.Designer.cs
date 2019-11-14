@@ -59,6 +59,7 @@
             this.lsv_Classes.Location = new System.Drawing.Point(80, 574);
             this.lsv_Classes.Name = "lsv_Classes";
             this.lsv_Classes.Size = new System.Drawing.Size(505, 311);
+            this.lsv_Classes.SmallImageList = this.ilst_TrackIcons;
             this.lsv_Classes.TabIndex = 0;
             this.lsv_Classes.UseCompatibleStateImageBehavior = false;
             // 
