@@ -248,7 +248,19 @@ namespace ClaryJason_CE02
             }
             else
             {
+                // deletes the course from the database
+                FullSailClass course = (FullSailClass)lsv_Classes.SelectedItems[0].Tag;
+                string stm = "DELETE FROM Classes " +
+                             "WHERE ID = @itemId;";
 
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                cmd.Parameters.AddWithValue("@itemId", course.ID);
+
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+
+                // deletes from view list
+                lsv_Classes.SelectedItems[0].Remove();
             }
         }
 
@@ -258,8 +270,6 @@ namespace ClaryJason_CE02
             MessageBox.Show(index.ToString());
             lsv_Classes.Items[index].Selected = true;
             FillFields();
-
-
         }
 
         private void btn_Left_Click(object sender, EventArgs e)
