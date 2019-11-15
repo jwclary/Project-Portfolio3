@@ -12,8 +12,8 @@ namespace TicTacToe
 {
     public partial class frmTicTacToe : Form
     {
-        // NAME:
-        // CLASS AND TERM:
+        // NAME: Jason W. Clary
+        // CLASS AND TERM: 1911
         // PROJECT: Tic Tac Toe
 
         /* THINGS TO CONSIDER:
@@ -34,6 +34,68 @@ namespace TicTacToe
         public frmTicTacToe()
         {
             InitializeComponent();
+            HandleClientWindowSize();
         }
+
+        //------------------------HANDELS BACKGROUND IMAGE------------------------
+        void HandleClientWindowSize()
+        {
+            //Modify ONLY these float values
+            float HeightValueToChange = 1.4f;
+            float WidthValueToChange = 6.0f;
+
+            //DO NOT MODIFY THIS CODE
+            int height = Convert.ToInt32(Screen.PrimaryScreen.WorkingArea.Size.Height / HeightValueToChange);
+            int width = Convert.ToInt32(Screen.PrimaryScreen.WorkingArea.Size.Width / WidthValueToChange);
+            if (height < Size.Height)
+                height = Size.Height;
+            if (width < Size.Width)
+                width = Size.Width;
+            this.Size = new Size(width, height);
+            //this.Size = new Size(376, 720);
+        }
+        //------------------------------------------------------------------------
+
+        //----------------------------------FILE----------------------------------
+        private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        //------------------------------------------------------------------------
+
+        //----------------------------------VIEW----------------------------------
+        private void blueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void redToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        //------------------------------------------------------------------------
+
+        //---------------------------------SELECT---------------------------------
+        private void xToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void oToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        //------------------------------------------------------------------------
+
     }
 }
