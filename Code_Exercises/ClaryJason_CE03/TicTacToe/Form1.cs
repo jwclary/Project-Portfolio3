@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+// directive to add XMl
+using System.Xml;
 
 namespace TicTacToe
 {
@@ -67,7 +63,54 @@ namespace TicTacToe
 
         private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // first, we need a new instance of the Save Dialog
+            SaveFileDialog dlg = new SaveFileDialog();
 
+            // we'll also set the default extension
+            dlg.DefaultExt = "xml";
+
+            // if the user clicks the OK button
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                // we'll create a new instance of the XmlWriterSettings
+                XmlWriterSettings settings = new XmlWriterSettings();
+                settings.ConformanceLevel = ConformanceLevel.Document;
+
+                // we'll also set the indentation of the XML
+                settings.Indent = true;
+
+                // now it's time to insrantiate the XmlWriter
+                using (XmlWriter writer = XmlWriter.Create(dlg.FileName, settings))
+                {
+                    // the first element we want will define what the data is
+                    writer.WriteStartElement("Tic-Tac-Toe");
+
+                    // next, we'll create a child element for the stock name
+                        writer.WriteStartElement("Game Save");
+
+                    // game color
+                    writer.WriteElementString("Game Color", r1c1button.ImageList.ToString());
+
+                    // Row 1
+                    writer.WriteElementString("Row-1 Column-1", r1c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1 Column-2", r1c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1 Column-3", r1c3button.ImageIndex.ToString());
+                    // Row 2
+                    writer.WriteElementString("Row-2 Column-1", r2c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2 Column-2", r2c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2 Column-3", r2c3button.ImageIndex.ToString());
+                    // Row 3
+                    writer.WriteElementString("Row-3 Column-1", r3c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3 Column-2", r3c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3 Column-3", r3c3button.ImageIndex.ToString());
+
+
+                    writer.WriteEndElement();
+
+                    // close the initial element
+                    writer.WriteEndElement();
+                }
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
