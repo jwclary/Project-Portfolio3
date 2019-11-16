@@ -197,9 +197,31 @@ namespace TicTacToe
         //------------------------------------------------------------------------
 
         //--------------------------------FUNCTIONS-------------------------------
+        private void CheckWinner()
+        {
+            // checks the top row
+            if (r1c1button.ImageIndex != -1 && r1c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r1c2button.ImageIndex.Equals(r1c3button.ImageIndex))
+            {
+                DisplayWinner(r1c1button.ImageIndex);
+            }
+        }
 
-
-
+        private void DisplayWinner(int index)
+        {
+            // displays winning message
+            switch (index)
+            {
+                case 0:
+                    MessageBox.Show("O Wins!");
+                    break;
+                case 1:
+                    MessageBox.Show("X Wins!");
+                    break;
+                default:
+                    MessageBox.Show("Draw!");
+                    break;
+            }
+        }
 
 
         //------------------------------------------------------------------------
