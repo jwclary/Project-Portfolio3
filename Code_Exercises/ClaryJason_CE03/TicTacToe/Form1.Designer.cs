@@ -149,7 +149,6 @@
             this.selectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.xToolStripMenuItem,
             this.oToolStripMenuItem});
-            this.selectToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
             this.selectToolStripMenuItem.Size = new System.Drawing.Size(91, 38);
             this.selectToolStripMenuItem.Text = "Select";
@@ -158,6 +157,7 @@
             // 
             this.xToolStripMenuItem.Checked = true;
             this.xToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.xToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.xToolStripMenuItem.Name = "xToolStripMenuItem";
             this.xToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
             this.xToolStripMenuItem.Text = "X";

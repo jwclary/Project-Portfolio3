@@ -32,7 +32,7 @@ namespace TicTacToe
         */
 
         // Global variable to keep track of current player
-        public int currentMove = 0;
+        public int currentMove = 1;
 
         public frmTicTacToe()
         {
@@ -117,12 +117,22 @@ namespace TicTacToe
         //---------------------------------SELECT---------------------------------
         private void xToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // checks the X option
+            xToolStripMenuItem.Checked = true;
+            oToolStripMenuItem.Checked = false;
 
+            // sets the currentMove to appropriate number, 1 = "x"
+            currentMove = 1;
         }
 
         private void oToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // checks the O option
+            oToolStripMenuItem.Checked = true;
+            xToolStripMenuItem.Checked = false;
 
+            // sets the currentMove to appropriate number, 0 = "o"
+            currentMove = 0;
         }
         //------------------------------------------------------------------------
 
@@ -138,11 +148,25 @@ namespace TicTacToe
                 switch (currentMove)
                 {
                     case 0:
+                        // checks the X option in select
+                        xToolStripMenuItem.Checked = true;
+                        oToolStripMenuItem.Checked = false;
+
+                        // set the image 
                         button.ImageIndex = currentMove;
+
+                        // increment counter
                         currentMove++;
                         break;
                     case 1:
+                        // checks the O option in select
+                        oToolStripMenuItem.Checked = true;
+                        xToolStripMenuItem.Checked = false;
+
+                        // set the image
                         button.ImageIndex = currentMove;
+
+                        // decrement 
                         currentMove--;
                         break;
                     default:
