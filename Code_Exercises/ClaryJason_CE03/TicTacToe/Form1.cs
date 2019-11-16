@@ -178,6 +178,83 @@ namespace TicTacToe
         // clears the game by setting all the Image Index to -1
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            NewGame();
+        }
+        //------------------------------------------------------------------------
+
+        //--------------------------------FUNCTIONS-------------------------------
+        private void CheckWinner()
+        {
+            //------------------------------------------ROWS------------------------------------------
+            // checks the top row
+            if (r1c1button.ImageIndex != -1 && r1c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r1c3button.ImageIndex.Equals(r1c1button.ImageIndex))
+            {
+                DisplayWinner(r1c1button.ImageIndex);
+            }
+            // checks the middle row
+            if (r2c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r2c1button.ImageIndex) && r2c3button.ImageIndex.Equals(r2c1button.ImageIndex))
+            {
+                DisplayWinner(r2c1button.ImageIndex);
+            }
+            // checks the bottom row
+            if (r3c1button.ImageIndex != -1 && r3c2button.ImageIndex.Equals(r3c1button.ImageIndex) && r3c3button.ImageIndex.Equals(r3c1button.ImageIndex))
+            {
+                DisplayWinner(r3c1button.ImageIndex);
+            }
+
+            //-----------------------------------------COLUMNS----------------------------------------
+            // checks the first column
+            if (r1c1button.ImageIndex != -1 && r2c1button.ImageIndex.Equals(r1c1button.ImageIndex) && r3c1button.ImageIndex.Equals(r1c1button.ImageIndex))
+            {
+                DisplayWinner(r1c1button.ImageIndex);
+            }
+            // checks the second column
+            if (r1c2button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r1c2button.ImageIndex) && r3c2button.ImageIndex.Equals(r1c2button.ImageIndex))
+            {
+                DisplayWinner(r1c1button.ImageIndex);
+            }
+            // checks the third column
+            if (r1c3button.ImageIndex != -1 && r2c3button.ImageIndex.Equals(r1c3button.ImageIndex) && r3c3button.ImageIndex.Equals(r1c3button.ImageIndex))
+            {
+                DisplayWinner(r1c3button.ImageIndex);
+            }
+
+            // ----------------------------------------DIAGANOLS---------------------------------------
+            // checks the first column
+            if (r1c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r3c3button.ImageIndex.Equals(r1c1button.ImageIndex))
+            {
+                DisplayWinner(r1c1button.ImageIndex);
+            }
+            // checks the second column
+            if (r3c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r3c1button.ImageIndex) && r3c1button.ImageIndex.Equals(r3c1button.ImageIndex))
+            {
+                DisplayWinner(r3c1button.ImageIndex);
+            }
+
+        }
+
+        private void DisplayWinner(int index)
+        {
+            // displays winning message
+            switch (index)
+            {
+                case 0:
+                    MessageBox.Show("O Wins!");
+                    NewGame();
+                    break;
+                case 1:
+                    MessageBox.Show("X Wins!");
+                    NewGame();
+                    break;
+                default:
+                    MessageBox.Show("Draw!");
+                    NewGame();
+                    break;
+            }
+        }
+
+        private void NewGame()
+        {
             // set current move back to X
             currentMove = 1;
             xToolStripMenuItem.Checked = true;
@@ -194,36 +271,6 @@ namespace TicTacToe
             r3c2button.ImageIndex = -1;
             r3c3button.ImageIndex = -1;
         }
-        //------------------------------------------------------------------------
-
-        //--------------------------------FUNCTIONS-------------------------------
-        private void CheckWinner()
-        {
-            // checks the top row
-            if (r1c1button.ImageIndex != -1 && r1c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r1c2button.ImageIndex.Equals(r1c3button.ImageIndex))
-            {
-                DisplayWinner(r1c1button.ImageIndex);
-            }
-        }
-
-        private void DisplayWinner(int index)
-        {
-            // displays winning message
-            switch (index)
-            {
-                case 0:
-                    MessageBox.Show("O Wins!");
-                    break;
-                case 1:
-                    MessageBox.Show("X Wins!");
-                    break;
-                default:
-                    MessageBox.Show("Draw!");
-                    break;
-            }
-        }
-
-
         //------------------------------------------------------------------------
 
     }
