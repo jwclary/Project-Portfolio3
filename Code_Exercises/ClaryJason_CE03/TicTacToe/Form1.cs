@@ -154,9 +154,12 @@ namespace TicTacToe
 
                         // set the image 
                         button.ImageIndex = currentMove;
-
+                       
                         // increment counter
                         currentMove++;
+
+                        // check for winner
+                        CheckWinner();
                         break;
                     case 1:
                         // checks the O option in select
@@ -168,6 +171,9 @@ namespace TicTacToe
 
                         // decrement 
                         currentMove--;
+
+                        // check for winner
+                        CheckWinner();
                         break;
                     default:
                         break;
@@ -185,21 +191,25 @@ namespace TicTacToe
         //--------------------------------FUNCTIONS-------------------------------
         private void CheckWinner()
         {
+            bool win = false;
             //------------------------------------------ROWS------------------------------------------
             // checks the top row
             if (r1c1button.ImageIndex != -1 && r1c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r1c3button.ImageIndex.Equals(r1c1button.ImageIndex))
             {
                 DisplayWinner(r1c1button.ImageIndex);
+                win = true;
             }
             // checks the middle row
             if (r2c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r2c1button.ImageIndex) && r2c3button.ImageIndex.Equals(r2c1button.ImageIndex))
             {
                 DisplayWinner(r2c1button.ImageIndex);
+                win = true;
             }
             // checks the bottom row
             if (r3c1button.ImageIndex != -1 && r3c2button.ImageIndex.Equals(r3c1button.ImageIndex) && r3c3button.ImageIndex.Equals(r3c1button.ImageIndex))
             {
                 DisplayWinner(r3c1button.ImageIndex);
+                win = true;
             }
 
             //-----------------------------------------COLUMNS----------------------------------------
@@ -207,16 +217,19 @@ namespace TicTacToe
             if (r1c1button.ImageIndex != -1 && r2c1button.ImageIndex.Equals(r1c1button.ImageIndex) && r3c1button.ImageIndex.Equals(r1c1button.ImageIndex))
             {
                 DisplayWinner(r1c1button.ImageIndex);
+                win = true;
             }
             // checks the second column
             if (r1c2button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r1c2button.ImageIndex) && r3c2button.ImageIndex.Equals(r1c2button.ImageIndex))
             {
                 DisplayWinner(r1c1button.ImageIndex);
+                win = true;
             }
             // checks the third column
             if (r1c3button.ImageIndex != -1 && r2c3button.ImageIndex.Equals(r1c3button.ImageIndex) && r3c3button.ImageIndex.Equals(r1c3button.ImageIndex))
             {
                 DisplayWinner(r1c3button.ImageIndex);
+                win = true;
             }
 
             // ----------------------------------------DIAGANOLS---------------------------------------
@@ -224,13 +237,24 @@ namespace TicTacToe
             if (r1c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r1c1button.ImageIndex) && r3c3button.ImageIndex.Equals(r1c1button.ImageIndex))
             {
                 DisplayWinner(r1c1button.ImageIndex);
+                win = true;
             }
             // checks the second column
-            if (r3c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r3c1button.ImageIndex) && r3c1button.ImageIndex.Equals(r3c1button.ImageIndex))
+            if (r3c1button.ImageIndex != -1 && r2c2button.ImageIndex.Equals(r3c1button.ImageIndex) && r1c3button.ImageIndex.Equals(r3c1button.ImageIndex))
             {
                 DisplayWinner(r3c1button.ImageIndex);
+                win = true;
             }
 
+            //------------------------------------------DRAW------------------------------------------
+            // checks if all buttons are empty and theres still no winner
+            if (r1c1button.ImageIndex > -1 && r1c2button.ImageIndex > -1 && r1c3button.ImageIndex > -1 &&
+                r2c1button.ImageIndex > -1 && r2c2button.ImageIndex > -1 && r2c3button.ImageIndex > -1 &&
+                r3c1button.ImageIndex > -1 && r3c2button.ImageIndex > -1 && r3c3button.ImageIndex > -1 &&
+                win == false)
+            {
+                DisplayWinner(-1);
+            }
         }
 
         private void DisplayWinner(int index)
