@@ -265,13 +265,15 @@
             // tsmi_Save
             // 
             this.tsmi_Save.Name = "tsmi_Save";
+            this.tsmi_Save.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.tsmi_Save.Size = new System.Drawing.Size(268, 38);
-            this.tsmi_Save.Text = "Save";
+            this.tsmi_Save.Text = "Print";
             this.tsmi_Save.Click += new System.EventHandler(this.tsmi_Save_Click);
             // 
             // tsmi_Exit
             // 
             this.tsmi_Exit.Name = "tsmi_Exit";
+            this.tsmi_Exit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
             this.tsmi_Exit.Size = new System.Drawing.Size(268, 38);
             this.tsmi_Exit.Text = "Exit";
             this.tsmi_Exit.Click += new System.EventHandler(this.tsmi_Exit_Click);

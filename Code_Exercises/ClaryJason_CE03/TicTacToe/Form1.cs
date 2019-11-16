@@ -31,6 +31,9 @@ namespace TicTacToe
               file.
         */
 
+        // Global variable to keep track of current player
+        public int currentMove = 0;
+
         public frmTicTacToe()
         {
             InitializeComponent();
@@ -76,12 +79,14 @@ namespace TicTacToe
         //----------------------------------VIEW----------------------------------
         private void blueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            blueToolStripMenuItem.Checked = true;
+            redToolStripMenuItem.Checked = false;
         }
 
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            redToolStripMenuItem.Checked = true;
+            blueToolStripMenuItem.Checked = false;
         }
         //------------------------------------------------------------------------
 
@@ -95,6 +100,54 @@ namespace TicTacToe
         {
 
         }
+        //------------------------------------------------------------------------
+
+        //------------------------------BUTTON CLICKS-----------------------------
+        void button_Click(Object sender, EventArgs e)
+        {
+            var button = sender as Button;
+
+            // checks if the button is either null or has no image
+            // if button has its image set, doesnt change it
+            if (button != null && button.ImageIndex == -1)
+            {
+                switch (currentMove)
+                {
+                    case 0:
+                        button.ImageIndex = currentMove;
+                        currentMove++;
+                        break;
+                    case 1:
+                        button.ImageIndex = currentMove;
+                        currentMove--;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        // clears the game by setting all the Image Index to -1
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            r1c1button.ImageIndex = -1;
+            r1c2button.ImageIndex = -1;
+            r1c3button.ImageIndex = -1;
+            r2c1button.ImageIndex = -1;
+            r2c2button.ImageIndex = -1;
+            r2c3button.ImageIndex = -1;
+            r3c1button.ImageIndex = -1;
+            r3c2button.ImageIndex = -1;
+            r3c3button.ImageIndex = -1;
+        }
+        //------------------------------------------------------------------------
+
+        //--------------------------------FUNCTIONS-------------------------------
+
+
+
+
+
         //------------------------------------------------------------------------
 
     }
