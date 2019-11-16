@@ -178,6 +178,12 @@ namespace TicTacToe
         // clears the game by setting all the Image Index to -1
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
+            // set current move back to X
+            currentMove = 1;
+            xToolStripMenuItem.Checked = true;
+            oToolStripMenuItem.Checked = false;
+
+            // reset all Tic Tac Toe buttons
             r1c1button.ImageIndex = -1;
             r1c2button.ImageIndex = -1;
             r1c3button.ImageIndex = -1;
