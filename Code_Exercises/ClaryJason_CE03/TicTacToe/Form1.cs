@@ -79,14 +79,38 @@ namespace TicTacToe
         //----------------------------------VIEW----------------------------------
         private void blueToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // checks the blue option
             blueToolStripMenuItem.Checked = true;
             redToolStripMenuItem.Checked = false;
+
+            // changes the imageList to blue
+            r1c1button.ImageList = blueImages;
+            r1c2button.ImageList = blueImages;
+            r1c3button.ImageList = blueImages;
+            r2c1button.ImageList = blueImages;
+            r2c2button.ImageList = blueImages;
+            r2c3button.ImageList = blueImages;
+            r3c1button.ImageList = blueImages;
+            r3c2button.ImageList = blueImages;
+            r3c3button.ImageList = blueImages;
         }
 
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // checks the red option
             redToolStripMenuItem.Checked = true;
             blueToolStripMenuItem.Checked = false;
+
+            // changes the imageList to red
+            r1c1button.ImageList = redImages;
+            r1c2button.ImageList = redImages;
+            r1c3button.ImageList = redImages;
+            r2c1button.ImageList = redImages;
+            r2c2button.ImageList = redImages;
+            r2c3button.ImageList = redImages;
+            r3c1button.ImageList = redImages;
+            r3c2button.ImageList = redImages;
+            r3c3button.ImageList = redImages;
         }
         //------------------------------------------------------------------------
 
