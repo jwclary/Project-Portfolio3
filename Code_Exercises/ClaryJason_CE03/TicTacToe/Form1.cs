@@ -27,8 +27,9 @@ namespace TicTacToe
               file.
         */
 
-        // Global variable to keep track of current player
+        // Global variables
         public int currentMove = 1;
+        public bool defaultColor = true;
 
         public frmTicTacToe()
         {
@@ -58,7 +59,98 @@ namespace TicTacToe
         //----------------------------------FILE----------------------------------
         private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+            // create the dialog
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = @"C:\\";
+            dlg.Filter = "XML Files|*.xml";
+            dlg.FilterIndex = 2;
+            dlg.RestoreDirectory = true;
 
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.ConformanceLevel = ConformanceLevel.Document;
+
+                // we want to make sure our reader gates only the XML
+                // so we'll set it to ignore comments and whitespace
+                settings.IgnoreComments = true;
+                settings.IgnoreWhitespace = true;
+
+                // using the XmlReader
+                using (XmlReader reader = XmlReader.Create(dlg.FileName, settings))
+                {
+                    // skip the metadata
+                    reader.MoveToContent();
+
+                    // verify that this is our stock data
+                    if (reader.Name != "Tic-Tac-Toe")
+                    {
+                        // return that this is not right
+                        MessageBox.Show("These are not the data you're looking for.");
+                        return;
+                    }
+
+                    // if it is, move through the data and get what we want
+                    while (reader.Read())
+                    {
+
+                        // Game Color
+                        if (reader.Name == "Game_Color" && reader.IsStartElement())
+                        {
+                            ChangeImageList(bool.Parse(reader.ReadElementContentAsString()));
+                        }
+
+                        // Row 1
+                        if (reader.Name == "Row-1_Column-1" && reader.IsStartElement())
+                        {
+                            r1c1button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-1_Column-2" && reader.IsStartElement())
+                        {
+                            r1c2button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-1_Column-3" && reader.IsStartElement())
+                        {
+                            r1c3button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+
+                        // Row 2
+                        if (reader.Name == "Row-2_Column-1" && reader.IsStartElement())
+                        {
+                            r2c1button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-2_Column-2" && reader.IsStartElement())
+                        {
+                            r2c2button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-2_Column-3" && reader.IsStartElement())
+                        {
+                            r2c3button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+
+                        // Row 3
+                        if (reader.Name == "Row-3_Column-1" && reader.IsStartElement())
+                        {
+                            r3c1button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-3_Column-2" && reader.IsStartElement())
+                        {
+                            r3c2button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                        if (reader.Name == "Row-3_Column-3" && reader.IsStartElement())
+                        {
+                            r3c3button.ImageIndex = int.Parse(reader.ReadElementContentAsString());
+                        }
+                    }
+                }
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bad File!");
+            }
         }
 
         private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,23 +178,23 @@ namespace TicTacToe
                     writer.WriteStartElement("Tic-Tac-Toe");
 
                     // next, we'll create a child element for the stock name
-                        writer.WriteStartElement("Game Save");
+                    writer.WriteStartElement("Game_Save");
 
                     // game color
-                    writer.WriteElementString("Game Color", r1c1button.ImageList.ToString());
+                    writer.WriteElementString("Game_Color", defaultColor.ToString());
 
                     // Row 1
-                    writer.WriteElementString("Row-1 Column-1", r1c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-1 Column-2", r1c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-1 Column-3", r1c3button.ImageIndex.ToString());
-                    // Row 2
-                    writer.WriteElementString("Row-2 Column-1", r2c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-2 Column-2", r2c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-2 Column-3", r2c3button.ImageIndex.ToString());
-                    // Row 3
-                    writer.WriteElementString("Row-3 Column-1", r3c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-3 Column-2", r3c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-3 Column-3", r3c3button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1-Column-1", r1c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1-Column-2", r1c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1-Column-3", r1c3button.ImageIndex.ToString());
+                    // Row 2                        
+                    writer.WriteElementString("Row-2-Column-1", r2c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2-Column-2", r2c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2-Column-3", r2c3button.ImageIndex.ToString());
+                    // Row 3                        
+                    writer.WriteElementString("Row-3-Column-1", r3c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3-Column-2", r3c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3-Column-3", r3c3button.ImageIndex.ToString());
 
 
                     writer.WriteEndElement();
@@ -122,38 +214,16 @@ namespace TicTacToe
         //----------------------------------VIEW----------------------------------
         private void blueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // checks the blue option
-            blueToolStripMenuItem.Checked = true;
-            redToolStripMenuItem.Checked = false;
-
-            // changes the imageList to blue
-            r1c1button.ImageList = blueImages;
-            r1c2button.ImageList = blueImages;
-            r1c3button.ImageList = blueImages;
-            r2c1button.ImageList = blueImages;
-            r2c2button.ImageList = blueImages;
-            r2c3button.ImageList = blueImages;
-            r3c1button.ImageList = blueImages;
-            r3c2button.ImageList = blueImages;
-            r3c3button.ImageList = blueImages;
+            // change the defaultColor bool
+            defaultColor = true;
+            ChangeImageList(defaultColor);
         }
 
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // checks the red option
-            redToolStripMenuItem.Checked = true;
-            blueToolStripMenuItem.Checked = false;
-
-            // changes the imageList to red
-            r1c1button.ImageList = redImages;
-            r1c2button.ImageList = redImages;
-            r1c3button.ImageList = redImages;
-            r2c1button.ImageList = redImages;
-            r2c2button.ImageList = redImages;
-            r2c3button.ImageList = redImages;
-            r3c1button.ImageList = redImages;
-            r3c2button.ImageList = redImages;
-            r3c3button.ImageList = redImages;
+            // change the defaultColor bool
+            defaultColor = false;
+            ChangeImageList(defaultColor);
         }
         //------------------------------------------------------------------------
 
@@ -197,7 +267,7 @@ namespace TicTacToe
 
                         // set the image 
                         button.ImageIndex = currentMove;
-                       
+
                         // increment counter
                         currentMove++;
 
@@ -338,7 +408,48 @@ namespace TicTacToe
             r3c2button.ImageIndex = -1;
             r3c3button.ImageIndex = -1;
         }
-        //------------------------------------------------------------------------
 
+        private void ChangeImageList(bool defaultColor)
+        {
+            switch (defaultColor)
+            {
+                case true:
+                    // checks the blue option
+                    blueToolStripMenuItem.Checked = true;
+                    redToolStripMenuItem.Checked = false;
+
+                    // changes the imageList to blue
+                    r1c1button.ImageList = blueImages;
+                    r1c2button.ImageList = blueImages;
+                    r1c3button.ImageList = blueImages;
+                    r2c1button.ImageList = blueImages;
+                    r2c2button.ImageList = blueImages;
+                    r2c3button.ImageList = blueImages;
+                    r3c1button.ImageList = blueImages;
+                    r3c2button.ImageList = blueImages;
+                    r3c3button.ImageList = blueImages;
+                    break;
+                case false:
+                    // checks the red option
+                    redToolStripMenuItem.Checked = true;
+                    blueToolStripMenuItem.Checked = false;
+
+                    // changes the imageList to red
+                    r1c1button.ImageList = redImages;
+                    r1c2button.ImageList = redImages;
+                    r1c3button.ImageList = redImages;
+                    r2c1button.ImageList = redImages;
+                    r2c2button.ImageList = redImages;
+                    r2c3button.ImageList = redImages;
+                    r3c1button.ImageList = redImages;
+                    r3c2button.ImageList = redImages;
+                    r3c3button.ImageList = redImages;
+                    break;
+                default:
+                    break;
+            }
+            //------------------------------------------------------------------------
+
+        }
     }
 }
