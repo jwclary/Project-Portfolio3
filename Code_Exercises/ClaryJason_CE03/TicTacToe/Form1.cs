@@ -184,17 +184,17 @@ namespace TicTacToe
                     writer.WriteElementString("Game_Color", defaultColor.ToString());
 
                     // Row 1
-                    writer.WriteElementString("Row-1-Column-1", r1c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-1-Column-2", r1c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-1-Column-3", r1c3button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1_Column-1", r1c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1_Column-2", r1c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-1_Column-3", r1c3button.ImageIndex.ToString());
                     // Row 2                        
-                    writer.WriteElementString("Row-2-Column-1", r2c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-2-Column-2", r2c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-2-Column-3", r2c3button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2_Column-1", r2c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2_Column-2", r2c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-2_Column-3", r2c3button.ImageIndex.ToString());
                     // Row 3                        
-                    writer.WriteElementString("Row-3-Column-1", r3c1button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-3-Column-2", r3c2button.ImageIndex.ToString());
-                    writer.WriteElementString("Row-3-Column-3", r3c3button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3_Column-1", r3c1button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3_Column-2", r3c2button.ImageIndex.ToString());
+                    writer.WriteElementString("Row-3_Column-3", r3c3button.ImageIndex.ToString());
 
 
                     writer.WriteEndElement();

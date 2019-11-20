@@ -7,17 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-// directive to include Newtonsoft
-using Newtonsoft.Json.Linq;
-using RestSharp;
-// directive to include internet connectivity
-using System.Net;
 
 namespace Asteroidz
 {
-    public partial class Form1 : Form
+    public partial class FavoritesForm : Form
     {
-        public Form1()
+        public FavoritesForm()
         {
             InitializeComponent();
         }
@@ -40,6 +35,5 @@ namespace Asteroidz
             //this.Size = new Size(376, 720);
         }
         //------------------------------------------------------------------------------------------
-
     }
 }

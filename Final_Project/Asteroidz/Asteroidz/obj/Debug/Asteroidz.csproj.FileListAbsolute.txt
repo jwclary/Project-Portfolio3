@@ -1,0 +1,16 @@
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\Asteroidz.exe.config
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\Asteroidz.exe
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\Asteroidz.pdb
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\Newtonsoft.Json.dll
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\RestSharp.dll
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\Newtonsoft.Json.xml
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\bin\Debug\RestSharp.xml
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.csprojResolveAssemblyReference.cache
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.FavoritesForm.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.InfoForm.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.LoginForm.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.MainForm.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.Properties.Resources.resources
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.csproj.GenerateResource.Cache
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.exe
+\\vmware-host\Shared Folders\Desktop\PaP3\PaP3_Repos\Project-Portfolio3\Final_Project\Asteroidz\Asteroidz\obj\Debug\Asteroidz.pdb
