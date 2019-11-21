@@ -20,7 +20,8 @@ namespace Asteroidz
         public MainForm()
         {
             InitializeComponent();
-            GetAsteroids();
+            HandleClientWindowSize();
+            //GetAsteroids();
         }
 
         //------------------------------------HANDLES BACKGROUND------------------------------------
@@ -77,7 +78,7 @@ namespace Asteroidz
             else
             {
                 // specific data from the JSON
-                string name = o["contextWrites"]["to"]["near_earth_objects"]["name"].ToString();
+                string name = o["contextWrites"]["to"]["near_earth_objects"][0]["name"].ToString();
                 double magnitude = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["absolute_magnitude_h"].ToString());
                 double diameterMin = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["estimated_diameter"]["feet"]["estimated_diameter_min"].ToString());
                 double diameterMax = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["estimated_diameter"]["feet"]["estimated_diameter_max"].ToString());

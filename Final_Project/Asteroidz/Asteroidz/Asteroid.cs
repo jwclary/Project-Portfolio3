@@ -8,5 +8,16 @@ namespace Asteroidz
 {
     class Asteroid
     {
+        // Asteroids variables
+        public string Name { get; set; }
+        public double Magnitude { get; set; }
+        public double DiameterMin { get; set; }
+        public double DiameterMax { get; set; }
+        public bool Hazardous { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

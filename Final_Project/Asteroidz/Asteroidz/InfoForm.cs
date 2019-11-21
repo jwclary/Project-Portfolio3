@@ -15,6 +15,7 @@ namespace Asteroidz
         public InfoForm()
         {
             InitializeComponent();
+            HandleClientWindowSize();
         }
 
         //------------------------------------HANDLES BACKGROUND------------------------------------
