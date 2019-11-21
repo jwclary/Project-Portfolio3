@@ -17,8 +17,15 @@ namespace Asteroidz
 {
     public partial class MainForm : Form
     {
+        // lists to hold different Asteroid data, as to only pull the info once
+        List<Asteroid> AsteroidList = new List<Asteroid>();
+        List<Asteroid> NEOList = new List<Asteroid>();
+
+        // data to hold the stats of all asteroids (will not change in program)
+
         public MainForm()
         {
+
             InitializeComponent();
             HandleClientWindowSize();
             //GetAsteroids();
@@ -78,13 +85,23 @@ namespace Asteroidz
             else
             {
                 // specific data from the JSON
-                string name = o["contextWrites"]["to"]["near_earth_objects"][0]["name"].ToString();
-                double magnitude = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["absolute_magnitude_h"].ToString());
-                double diameterMin = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["estimated_diameter"]["feet"]["estimated_diameter_min"].ToString());
-                double diameterMax = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["estimated_diameter"]["feet"]["estimated_diameter_max"].ToString());
-                bool hazardous = bool.Parse(o["contextWrites"]["to"]["near_earth_objects"][0]["is_potentially_hazardous_asteroid"].ToString());
+                for (int item = 0; item < o["contextWrites"]["to"]["near_earth_objects"].Count(); item++)
+                {
+                    // Asteroid object to hold the object
+                    Asteroid asteroid = new Asteroid();
 
-                MessageBox.Show(name);
+                    asteroid.Name = o["contextWrites"]["to"]["near_earth_objects"][item]["name"].ToString();
+                    asteroid.Magnitude = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["absolute_magnitude_h"].ToString());
+                    asteroid.DiameterMin = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_min"].ToString());
+                    asteroid.DiameterMax = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_max"].ToString());
+                    asteroid.Hazardous = bool.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["is_potentially_hazardous_asteroid"].ToString());
+
+                    // add to the list after info is added
+                    AsteroidList.Add(asteroid);
+                }
+                
+
+                //MessageBox.Show(name);
             }
         }
         //------------------------------------------------------------------------------------------
