@@ -154,15 +154,19 @@
             // 
             // btn_Back
             // 
+            this.btn_Back.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Back.Location = new System.Drawing.Point(70, 194);
             this.btn_Back.Name = "btn_Back";
             this.btn_Back.Size = new System.Drawing.Size(47, 49);
             this.btn_Back.TabIndex = 11;
             this.btn_Back.Text = "<";
-            this.btn_Back.UseVisualStyleBackColor = true;
+            this.btn_Back.UseVisualStyleBackColor = false;
             // 
             // btn_Save
             // 
+            this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Save.Location = new System.Drawing.Point(240, 732);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(233, 73);
