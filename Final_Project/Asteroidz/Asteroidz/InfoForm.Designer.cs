@@ -42,6 +42,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_Back = new System.Windows.Forms.Button();
             this.btn_Save = new System.Windows.Forms.Button();
+            this.txt_Hazardous = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_NearEarth = new System.Windows.Forms.TextBox();
+            this.lbl_NearEarth = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Magnitude)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Diameter_Min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_Diameter_Max)).BeginInit();
@@ -167,12 +171,50 @@
             // btn_Save
             // 
             this.btn_Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Save.Location = new System.Drawing.Point(240, 732);
+            this.btn_Save.Location = new System.Drawing.Point(238, 756);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(233, 73);
             this.btn_Save.TabIndex = 12;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
+            // 
+            // txt_Hazardous
+            // 
+            this.txt_Hazardous.Enabled = false;
+            this.txt_Hazardous.Location = new System.Drawing.Point(278, 621);
+            this.txt_Hazardous.Name = "txt_Hazardous";
+            this.txt_Hazardous.Size = new System.Drawing.Size(130, 31);
+            this.txt_Hazardous.TabIndex = 14;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(120, 621);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(134, 29);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Hazardous:";
+            // 
+            // txt_NearEarth
+            // 
+            this.txt_NearEarth.Enabled = false;
+            this.txt_NearEarth.Location = new System.Drawing.Point(278, 677);
+            this.txt_NearEarth.Name = "txt_NearEarth";
+            this.txt_NearEarth.Size = new System.Drawing.Size(174, 31);
+            this.txt_NearEarth.TabIndex = 16;
+            this.txt_NearEarth.Visible = false;
+            // 
+            // lbl_NearEarth
+            // 
+            this.lbl_NearEarth.AutoSize = true;
+            this.lbl_NearEarth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_NearEarth.Location = new System.Drawing.Point(120, 677);
+            this.lbl_NearEarth.Name = "lbl_NearEarth";
+            this.lbl_NearEarth.Size = new System.Drawing.Size(134, 29);
+            this.lbl_NearEarth.TabIndex = 15;
+            this.lbl_NearEarth.Text = "Near Earth:";
+            this.lbl_NearEarth.Visible = false;
             // 
             // InfoForm
             // 
@@ -182,6 +224,10 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(661, 1280);
+            this.Controls.Add(this.txt_NearEarth);
+            this.Controls.Add(this.lbl_NearEarth);
+            this.Controls.Add(this.txt_Hazardous);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.label7);
@@ -222,5 +268,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_Back;
         private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.TextBox txt_Hazardous;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_NearEarth;
+        private System.Windows.Forms.Label lbl_NearEarth;
     }
 }

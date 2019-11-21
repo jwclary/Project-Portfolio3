@@ -25,9 +25,15 @@ namespace Asteroidz
 
         public MainForm()
         {
+            // call login form to check user
+            LoginForm login = new LoginForm();
+            login.ShowDialog();
 
             InitializeComponent();
             HandleClientWindowSize();
+
+            
+
             //GetAsteroids();
         }
 

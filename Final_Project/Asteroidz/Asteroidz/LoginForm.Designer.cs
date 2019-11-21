@@ -34,9 +34,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_Password = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.btn_Login = new System.Windows.Forms.Button();
+            this.btn_NewUser = new System.Windows.Forms.Button();
+            this.lbl_Con_Password = new System.Windows.Forms.Label();
             this.txt_Con_Password = new System.Windows.Forms.TextBox();
             this.lbl_LoginError = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -85,36 +85,38 @@
             this.txt_Password.Size = new System.Drawing.Size(256, 31);
             this.txt_Password.TabIndex = 4;
             // 
-            // button1
+            // btn_Login
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(371, 790);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(191, 61);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Login.Location = new System.Drawing.Point(371, 790);
+            this.btn_Login.Name = "btn_Login";
+            this.btn_Login.Size = new System.Drawing.Size(191, 61);
+            this.btn_Login.TabIndex = 6;
+            this.btn_Login.Text = "Login";
+            this.btn_Login.UseVisualStyleBackColor = true;
+            this.btn_Login.Click += new System.EventHandler(this.btn_Login_Click);
             // 
-            // button2
+            // btn_NewUser
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(138, 790);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(191, 61);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "New User";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_NewUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_NewUser.Location = new System.Drawing.Point(138, 790);
+            this.btn_NewUser.Name = "btn_NewUser";
+            this.btn_NewUser.Size = new System.Drawing.Size(191, 61);
+            this.btn_NewUser.TabIndex = 7;
+            this.btn_NewUser.Text = "New User";
+            this.btn_NewUser.UseVisualStyleBackColor = true;
+            this.btn_NewUser.Click += new System.EventHandler(this.btn_NewUser_Click);
             // 
-            // label4
+            // lbl_Con_Password
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(73, 693);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(218, 29);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Confirm-Password:";
-            this.label4.Visible = false;
+            this.lbl_Con_Password.AutoSize = true;
+            this.lbl_Con_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Con_Password.Location = new System.Drawing.Point(73, 693);
+            this.lbl_Con_Password.Name = "lbl_Con_Password";
+            this.lbl_Con_Password.Size = new System.Drawing.Size(218, 29);
+            this.lbl_Con_Password.TabIndex = 9;
+            this.lbl_Con_Password.Text = "Confirm-Password:";
+            this.lbl_Con_Password.Visible = false;
             // 
             // txt_Con_Password
             // 
@@ -129,11 +131,11 @@
             // 
             this.lbl_LoginError.AutoSize = true;
             this.lbl_LoginError.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.lbl_LoginError.Location = new System.Drawing.Point(150, 460);
+            this.lbl_LoginError.Location = new System.Drawing.Point(121, 462);
             this.lbl_LoginError.Name = "lbl_LoginError";
-            this.lbl_LoginError.Size = new System.Drawing.Size(399, 25);
+            this.lbl_LoginError.Size = new System.Drawing.Size(441, 25);
             this.lbl_LoginError.TabIndex = 10;
-            this.lbl_LoginError.Text = "* User Name or Password were incorrect";
+            this.lbl_LoginError.Text = "* User Name and/or Password were incorrect";
             this.lbl_LoginError.Visible = false;
             // 
             // LoginForm
@@ -145,10 +147,10 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(661, 1280);
             this.Controls.Add(this.lbl_LoginError);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_Con_Password);
             this.Controls.Add(this.txt_Con_Password);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_NewUser);
+            this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_Password);
             this.Controls.Add(this.label2);
@@ -170,9 +172,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_Password;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btn_Login;
+        private System.Windows.Forms.Button btn_NewUser;
+        private System.Windows.Forms.Label lbl_Con_Password;
         private System.Windows.Forms.TextBox txt_Con_Password;
         private System.Windows.Forms.Label lbl_LoginError;
     }

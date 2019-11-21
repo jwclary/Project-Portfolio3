@@ -14,6 +14,7 @@ namespace Asteroidz
         public double DiameterMin { get; set; }
         public double DiameterMax { get; set; }
         public bool Hazardous { get; set; }
+        public string NearApproachDate { get; set; }
 
         public override string ToString()
         {

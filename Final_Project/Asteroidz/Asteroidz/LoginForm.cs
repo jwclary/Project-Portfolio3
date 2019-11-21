@@ -15,6 +15,7 @@ namespace Asteroidz
         public LoginForm()
         {
             InitializeComponent();
+            HandleClientWindowSize();
         }
 
         //------------------------------------HANDLES BACKGROUND------------------------------------
@@ -33,6 +34,65 @@ namespace Asteroidz
                 width = Size.Width;
             this.Size = new Size(width, height);
             //this.Size = new Size(376, 720);
+        }
+        //------------------------------------------------------------------------------------------
+
+        //-----------------------------------------BUTTONS------------------------------------------
+        private void btn_Login_Click(object sender, EventArgs e)
+        {
+            // check button text for proper functionality
+            if (btn_Login.Text == "Login")
+            {
+
+            }
+            else
+            {
+                // check if password is correct
+                if (txt_Password.Text == txt_Con_Password.Text && !string.IsNullOrWhiteSpace(txt_Password.Text) && !string.IsNullOrWhiteSpace(txt_UserName.Text))
+                {
+                    // close the form
+                    this.Close();
+                }
+                else
+                {
+                    //-------if the password is not correct-------
+                    // reset the inputs
+                    txt_UserName.Text = "";
+                    txt_Password.Text = "";
+                    txt_Con_Password.Text = "";
+
+                    // display error
+                    lbl_LoginError.Visible = true;
+                }
+            }
+        }
+
+        private void btn_NewUser_Click(object sender, EventArgs e)
+        {
+            // check button text for proper functionality
+            if (btn_NewUser.Text == "New User")
+            {
+                // enable the extra inputs
+                lbl_Con_Password.Visible = true;
+                txt_Con_Password.Visible = true;
+                txt_Con_Password.Enabled = true;
+
+                // change button functions
+                btn_Login.Text = "Create";
+                btn_NewUser.Text = "Cancel";
+            }
+            else
+            {
+                // disable the extra inputs
+                lbl_Con_Password.Visible = false;
+                txt_Con_Password.Visible = false;
+                txt_Con_Password.Enabled = false;
+
+                // change button functions
+                btn_Login.Text = "Login";
+                btn_NewUser.Text = "New User";
+            }
+            
         }
         //------------------------------------------------------------------------------------------
     }
