@@ -86,6 +86,7 @@
             this.btn_Back.TabIndex = 12;
             this.btn_Back.Text = "<";
             this.btn_Back.UseVisualStyleBackColor = true;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
             // 
             // FavoritesForm
             // 
