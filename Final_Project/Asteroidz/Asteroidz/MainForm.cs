@@ -34,7 +34,7 @@ namespace Asteroidz
 
             
 
-            //GetAsteroids();
+            GetAsteroids();
         }
 
         //------------------------------------HANDLES BACKGROUND------------------------------------
@@ -60,7 +60,7 @@ namespace Asteroidz
         private void GetAsteroids()
         {
             // api connection
-            var client = new RestClient("https://nasaapidimasv1.p.rapidapi.com/getClosestAsteroids");
+            var client = new RestClient("https://nasaapidimasv1.p.rapidapi.com/getAsteroids");
             var request = new RestRequest(Method.POST);
             request.AddHeader("x-rapidapi-host", "NasaAPIdimasV1.p.rapidapi.com");
             request.AddHeader("x-rapidapi-key", "048bf63835mshb667c766bc15207p19baf2jsnc9ebcdb82d16");
@@ -90,26 +90,36 @@ namespace Asteroidz
             }
             else
             {
-                // specific data from the JSON
-                for (int item = 0; item < o["contextWrites"]["to"]["near_earth_objects"].Count(); item++)
-                {
-                    // Asteroid object to hold the object
-                    Asteroid asteroid = new Asteroid();
+                //// specific data from the JSON
+                //for (int item = 0; item < o["contextWrites"]["to"]["near_earth_objects"].Count(); item++)
+                //{
+                //    // Asteroid object to hold the object
+                //    Asteroid asteroid = new Asteroid();
 
-                    asteroid.Name = o["contextWrites"]["to"]["near_earth_objects"][item]["name"].ToString();
-                    asteroid.Magnitude = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["absolute_magnitude_h"].ToString());
-                    asteroid.DiameterMin = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_min"].ToString());
-                    asteroid.DiameterMax = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_max"].ToString());
-                    asteroid.Hazardous = bool.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["is_potentially_hazardous_asteroid"].ToString());
+                //    asteroid.Name = o["contextWrites"]["to"]["near_earth_objects"][item]["name"].ToString();
+                //    asteroid.Magnitude = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["absolute_magnitude_h"].ToString());
+                //    asteroid.DiameterMin = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_min"].ToString());
+                //    asteroid.DiameterMax = double.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["estimated_diameter"]["feet"]["estimated_diameter_max"].ToString());
+                //    asteroid.Hazardous = bool.Parse(o["contextWrites"]["to"]["near_earth_objects"][item]["is_potentially_hazardous_asteroid"].ToString());
 
-                    // add to the list after info is added
-                    AsteroidList.Add(asteroid);
-                }
-                
+                //    // add to the list after info is added
+                //    AsteroidList.Add(asteroid);
+                //}
+
+                var name = o["contextWrites"]["to"]["near_earth_objects"];
+                var name1 = name["ChildrenTokens"];
+                var name2 = name1[0];
 
                 //MessageBox.Show(name);
             }
         }
+
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            FavoritesForm form = new FavoritesForm();
+            form.ShowDialog();
+        }
         //------------------------------------------------------------------------------------------
     }
+
 }

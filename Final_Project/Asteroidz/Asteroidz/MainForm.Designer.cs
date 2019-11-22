@@ -35,6 +35,7 @@
             this.rad_NEO = new System.Windows.Forms.RadioButton();
             this.lst_Asteroids = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btn_Back = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -98,6 +99,19 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "* Double click to display information";
             // 
+            // btn_Back
+            // 
+            this.btn_Back.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btn_Back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Back.Location = new System.Drawing.Point(541, 178);
+            this.btn_Back.Name = "btn_Back";
+            this.btn_Back.Size = new System.Drawing.Size(47, 49);
+            this.btn_Back.TabIndex = 12;
+            this.btn_Back.Text = "|||";
+            this.btn_Back.UseVisualStyleBackColor = false;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -107,6 +121,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(661, 1280);
+            this.Controls.Add(this.btn_Back);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lst_Asteroids);
             this.Controls.Add(this.rad_NEO);
@@ -130,6 +145,7 @@
         private System.Windows.Forms.RadioButton rad_NEO;
         private System.Windows.Forms.ListBox lst_Asteroids;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_Back;
     }
 }
 

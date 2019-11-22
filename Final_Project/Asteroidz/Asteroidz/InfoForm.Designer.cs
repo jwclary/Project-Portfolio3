@@ -167,6 +167,7 @@
             this.btn_Back.TabIndex = 11;
             this.btn_Back.Text = "<";
             this.btn_Back.UseVisualStyleBackColor = false;
+            this.btn_Back.Click += new System.EventHandler(this.btn_Back_Click);
             // 
             // btn_Save
             // 

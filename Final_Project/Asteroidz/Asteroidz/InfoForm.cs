@@ -35,6 +35,11 @@ namespace Asteroidz
             this.Size = new Size(width, height);
             //this.Size = new Size(376, 720);
         }
+
+        private void btn_Back_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         //------------------------------------------------------------------------------------------
     }
 }

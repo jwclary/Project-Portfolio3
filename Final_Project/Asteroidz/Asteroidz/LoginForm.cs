@@ -43,7 +43,7 @@ namespace Asteroidz
             // check button text for proper functionality
             if (btn_Login.Text == "Login")
             {
-
+                this.Close();
             }
             else
             {
