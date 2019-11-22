@@ -106,9 +106,9 @@ namespace Asteroidz
                 //    AsteroidList.Add(asteroid);
                 //}
 
-                var name = o["contextWrites"]["to"]["near_earth_objects"];
-                var name1 = name["ChildrenTokens"];
-                var name2 = name1[0];
+                //var name = o["contextWrites"]["to"]["near_earth_objects"];
+                //var name1 = name["ChildrenTokens"];
+                //var name2 = name1[0];
 
                 //MessageBox.Show(name);
             }
