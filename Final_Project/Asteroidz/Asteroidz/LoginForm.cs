@@ -8,6 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Final Project
+ */
+
 namespace Asteroidz
 {
     public partial class LoginForm : Form

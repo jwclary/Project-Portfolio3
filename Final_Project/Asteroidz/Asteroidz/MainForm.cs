@@ -13,6 +13,12 @@ using RestSharp;
 // directive to include internet connectivity
 using System.Net;
 
+/*
+  Jason W. Clary
+  Project & Portfolio 3 - 1911
+  Final Project
+ */
+
 namespace Asteroidz
 {
     public partial class MainForm : Form
